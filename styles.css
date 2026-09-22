@@ -1,0 +1,366 @@
+/* Design Tokens & CSS Custom Properties */
+:root {
+  --color-slate-900: #16241D;
+  --color-slate-800: #20342A;
+  --color-forest-green: #2B4C3F;
+  --color-terracotta: #A45A2A;
+  --color-terracotta-dark: #87461D;
+  --color-gold: #C08A3E;
+  --color-purple: #5A2D44;
+  --color-cream: #FAF8F5;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F3EFEA;
+  --color-border: #DCD6CD;
+  --color-border-dark: #B3AAA0;
+  --color-text-main: #1C2621;
+  --color-text-muted: #59655F;
+  --color-focus: #0D6EFD;
+
+  --font-serif: "Times New Roman", Times, "Baskerville", Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 10px rgba(22, 36, 29, 0.06);
+  --shadow-lg: 0 8px 24px rgba(22, 36, 29, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header & Banner */
+.app-header {
+  background-color: var(--color-slate-900);
+  color: #FFFFFF;
+  padding: 3rem 1.5rem 2.5rem;
+  border-bottom: 4px solid var(--color-terracotta);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.classification-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
+.header-branding h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.header-branding p {
+  color: #CAD5CE;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  max-width: 580px;
+}
+
+/* KPI Summary Display */
+.kpi-panel {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.kpi-item {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.25rem;
+  min-width: 110px;
+}
+
+.kpi-value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1.2;
+}
+
+.kpi-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #DDE5E1;
+}
+
+/* Main Content Container */
+.main-content {
+  max-width: 1200px;
+  margin: -1.5rem auto 4rem;
+  padding: 0 1.5rem;
+}
+
+/* Interactive Control Console */
+.control-console {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-md);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-field label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.form-field input,
+.form-field select {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: var(--color-slate-900);
+  box-shadow: 0 0 0 3px rgba(22, 36, 29, 0.15);
+}
+
+/* Dynamic Live Status Bar */
+.status-bar {
+  margin: 1.25rem 0 1rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Catalog Card Grid */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1.5rem;
+}
+
+.cultivar-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.cultivar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-terracotta);
+}
+
+.card-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.badge-classification {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+}
+
+.badge-pseudocereal { background-color: #F8EFE3; color: #734F18; }
+.badge-tuberroot    { background-color: #F0EAF5; color: #4B276E; }
+.badge-legume       { background-color: #E2ECE5; color: #1B5834; }
+.badge-grain        { background-color: #F7E6EB; color: #771C35; }
+
+.cultivar-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-slate-900);
+  line-height: 1.2;
+}
+
+.cultivar-taxon {
+  display: block;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+}
+
+.cultivar-family {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--color-slate-800);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* Nutrient Matrix Grid */
+.macro-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background-color: var(--color-surface-alt);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.macro-cell-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.macro-cell-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-slate-900);
+}
+
+/* Secondary Nutrient Roster */
+.nutrient-roster {
+  list-style: none;
+  font-size: 0.82rem;
+  border-bottom: 1px dashed var(--color-border);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.nutrient-roster li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+}
+
+.nutrient-roster span {
+  color: var(--color-text-muted);
+}
+
+.nutrient-roster strong {
+  font-family: var(--font-mono);
+  color: var(--color-text-main);
+}
+
+/* Bioactive Phytochemical Detail */
+.bioactive-section {
+  margin-top: auto;
+}
+
+.bioactive-title {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-terracotta);
+  margin-bottom: 0.25rem;
+}
+
+.bioactive-desc {
+  font-size: 0.8rem;
+  color: var(--color-slate-800);
+  line-height: 1.45;
+}
+
+/* Empty State Feedback */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.empty-state h2 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--color-slate-900);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Footer Section */
+.app-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 860px) {
+  .control-console {
+    grid-template-columns: 1fr;
+  }
+  
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
