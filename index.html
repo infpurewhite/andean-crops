@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nutritional, biochemical, and agronomic database of Andean cultivars normalized per 100g edible dry portion.">
+  <meta name="description" content="Nutritional database and biochemical profiles of Andean agricultural cultivars normalized per 100g edible portion.">
   <title>Andean Agricultural &amp; Nutritional Observatory</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -11,23 +11,23 @@
   <header class="app-header">
     <div class="header-inner">
       <div class="header-branding">
-        <span class="classification-badge">Agrobiological Observatory</span>
+        <span class="badge">Agrobiological Observatory</span>
         <h1>Andean Cultivar Profiles</h1>
-        <p>Nutritional, biochemical, and phytochemical indicators normalized to 100g dry/edible portion.</p>
+        <p>Nutritional, biochemical, and phytochemical indicators standardized per 100g dry/edible portion.</p>
       </div>
 
       <aside class="kpi-panel" aria-label="Aggregated Metrics">
         <div class="kpi-item">
           <span class="kpi-value" id="kpi-total">0</span>
-          <span class="kpi-label">Cultivars</span>
+          <span class="kpi-label">Cultivars Listed</span>
         </div>
         <div class="kpi-item">
           <span class="kpi-value" id="kpi-protein">0g</span>
-          <span class="kpi-label">Peak Protein</span>
+          <span class="kpi-label">Peak Protein / 100g</span>
         </div>
         <div class="kpi-item">
           <span class="kpi-value" id="kpi-iron">0mg</span>
-          <span class="kpi-label">Peak Iron</span>
+          <span class="kpi-label">Peak Iron / 100g</span>
         </div>
       </aside>
     </div>
@@ -74,13 +74,14 @@
     </div>
 
     <section class="catalog-grid" id="cultivar-grid" aria-label="Cultivar Records">
-      <!-- Programmatically injected article cards -->
+      <!-- Cards rendered via main.js -->
     </section>
   </main>
 
   <footer class="app-footer">
-    <p>Data standardized per 100g edible portion. Derived from FAO/INFOODS Regional Food Composition Tables for the Andes and peer-reviewed agronomical literature.</p>
+    <p>Values standardized per 100g edible portion. Derived from FAO/INFOODS Regional Food Composition Tables for the Andes and agronomical literature.</p>
   </footer>
+
   <script src="./main.js"></script>
 </body>
 </html>
