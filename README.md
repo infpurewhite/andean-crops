@@ -2,6 +2,8 @@
 
 A curated, machine-readable dataset and a static web explorer for the proximate composition, energy and selected minerals of eight Andean crops. Every value records the state of the food, its source and how far it has been verified. Plausibility checks run in the browser and in continuous integration.
 
+**Live:** <https://anniececy.com/andean-crops/> (a copy made with `npm run site:copy`; `SOURCE.txt` there records the source commit).
+
 The project follows food-composition conventions (FAO/INFOODS component identifiers and data-checking practice). It reports gaps openly: values whose source is undocumented are kept, labelled and excluded on request, never presented as established.
 
 ## What the explorer does
