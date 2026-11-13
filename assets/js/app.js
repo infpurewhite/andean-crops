@@ -13,6 +13,7 @@ import {
   expressValue,
   formatNumber,
   getValue,
+  isPending,
   qualityChecks,
   unitLabel,
   verificationSummary,
@@ -76,6 +77,7 @@ const STATUS_BADGES = Object.freeze({
   corroborated: { label: "Source identified", tone: "positive" },
   partial: { label: "Partly sourced", tone: "caution" },
   unverified: { label: "Source not documented", tone: "caution" },
+  pending: { label: "Composition pending", tone: "neutral" },
 });
 
 const MATCH_LABELS = Object.freeze({
@@ -113,6 +115,7 @@ const ELEMENT_IDS = Object.freeze({
   results: "results",
   methods: "methods-content",
   references: "reference-list",
+  credits: "photo-credits",
   version: "dataset-version",
 });
 
@@ -144,6 +147,7 @@ export class CropExplorer {
     this.renderSummary();
     this.renderMethods();
     this.renderReferences();
+    this.renderCredits();
     this.state = parseState(new URLSearchParams(this.location.search), this.groups);
     this.syncControls();
     this.bindEvents();
@@ -281,6 +285,7 @@ export class CropExplorer {
   }
 
   missingReason(crop, componentId, basis) {
+    if (isPending(crop)) return "Composition pending";
     if (getValue(crop, componentId) === null) return "Not reported";
     if (basis === BASES.DRY_MATTER && componentId === "water") return "Not applicable on a dry-matter basis";
     if (basis === BASES.DRY_MATTER) return "Water content not reported, so no dry-matter value";
@@ -315,6 +320,7 @@ export class CropExplorer {
     return h(
       "article",
       { class: "crop-card", id: `crop-${crop.id}`, "aria-labelledby": headingId },
+      this.figure(crop),
       h(
         "header",
         { class: "crop-card__header" },
@@ -328,7 +334,7 @@ export class CropExplorer {
         crop.names.alternative.length > 0
           ? h("p", { class: "crop-card__alt" }, crop.names.alternative.join(" · "))
           : null,
-        h("p", { class: "crop-card__taxon" }, taxonNode(crop), h("span", { class: "family" }, crop.taxon.family)),
+        h("p", { class: "crop-card__taxon" }, taxonNode(crop, true), h("span", { class: "family" }, crop.taxon.family)),
         h(
           "p",
           { class: "crop-card__food" },
@@ -340,6 +346,52 @@ export class CropExplorer {
       crop.flags.length > 0
         ? h("ul", { class: "flags" }, crop.flags.map((flag) => h("li", { class: "flag" }, flag.text)))
         : null,
+      isPending(crop) ? this.pendingPanel(crop) : this.valuesSection(crop),
+      this.notesSection(crop),
+      this.provenance(crop, summary),
+    );
+  }
+
+  pendingPanel(crop) {
+    return h(
+      "div",
+      { class: "pending" },
+      h("p", { class: "pending__title" }, "Composition data pending"),
+      h("p", {}, crop.composition.note),
+    );
+  }
+
+  figure(crop) {
+    const { image } = crop;
+    if (!image) return null;
+    const { credit } = image;
+    const licence = credit.licence_url
+      ? h("a", { href: credit.licence_url, rel: "license noopener" }, credit.licence)
+      : credit.licence;
+    return h(
+      "figure",
+      { class: "crop-card__media" },
+      h("img", {
+        src: image.file,
+        alt: image.alt,
+        width: image.width,
+        height: image.height,
+        loading: "lazy",
+        decoding: "async",
+      }),
+      h(
+        "figcaption",
+        {},
+        `Photo: ${credit.author} · `,
+        licence,
+        " · ",
+        h("a", { href: credit.source_url, rel: "noopener" }, "Wikimedia Commons"),
+      ),
+    );
+  }
+
+  valuesSection(crop) {
+    return [
       h(
         "dl",
         { class: "metrics" },
@@ -356,9 +408,7 @@ export class CropExplorer {
           h("div", {}, h("dt", {}, this.components.get(id).label), h("dd", {}, this.valueNode(crop, id))),
         ),
       ),
-      this.notesSection(crop),
-      this.provenance(crop, summary),
-    );
+    ];
   }
 
   notesSection(crop) {
@@ -409,6 +459,19 @@ export class CropExplorer {
   }
 
   provenance(crop, summary) {
+    if (isPending(crop)) {
+      return h(
+        "details",
+        { class: "provenance" },
+        h("summary", {}, "Provenance"),
+        h(
+          "dl",
+          { class: "provenance__list" },
+          h("div", {}, h("dt", {}, "Composition"), h("dd", {}, `Pending. ${crop.composition.note}`)),
+          crop.taxon.note ? h("div", {}, h("dt", {}, "Taxonomy"), h("dd", {}, crop.taxon.note)) : null,
+        ),
+      );
+    }
     const source = this.sources.get(crop.composition.source);
     const sourceNode =
       source.type === "internal"
@@ -483,8 +546,19 @@ export class CropExplorer {
         h(
           "th",
           { scope: "row" },
+          crop.image
+            ? h("img", {
+                class: "table-thumb",
+                src: crop.image.file,
+                alt: "",
+                width: 56,
+                height: 42,
+                loading: "lazy",
+                decoding: "async",
+              })
+            : null,
           h("span", { class: "table-name" }, crop.names.common),
-          h("span", { class: "table-taxon" }, h("i", {}, scientificName(crop))),
+          h("span", { class: "table-taxon" }, taxonNode(crop, false)),
         ),
         h("td", {}, CONDITION_LABELS[crop.food.condition]),
         columns.map((id) => h("td", { class: "num" }, this.valueNode(crop, id, { withUnit: false }))),
@@ -520,10 +594,10 @@ export class CropExplorer {
     const { crops } = this.dataset;
     const values = crops.flatMap((crop) => Object.values(crop.composition.values));
     const identified = values.filter((entry) => entry.verification !== "unverified").length;
-    const families = new Set(crops.map((crop) => crop.taxon.family)).size;
+    const withData = crops.filter((crop) => !isPending(crop)).length;
     const items = [
       [String(crops.length), "Crops"],
-      [String(families), "Botanical families"],
+      [String(withData), "With composition data"],
       [`${identified}/${values.length}`, "Values with a source"],
       [String(this.citedSources().length), "Cited references"],
     ];
@@ -539,7 +613,7 @@ export class CropExplorer {
     const ids = new Set();
     for (const method of this.dataset.metadata.methods) method.refs.forEach((id) => ids.add(id));
     for (const crop of this.dataset.crops) {
-      ids.add(crop.composition.source);
+      if (crop.composition.source) ids.add(crop.composition.source);
       for (const entry of Object.values(crop.composition.values)) if (entry.source) ids.add(entry.source);
       for (const note of crop.notes) note.refs.forEach((id) => ids.add(id));
     }
@@ -568,6 +642,11 @@ export class CropExplorer {
     );
   }
 
+  renderCredits() {
+    const withImages = this.dataset.crops.filter((crop) => crop.image);
+    this.el.credits.replaceChildren(...withImages.map((crop) => creditItem(crop)));
+  }
+
   renderReferences() {
     this.el.references.replaceChildren(
       ...sortReferences(this.citedSources()).map((source) =>
@@ -585,6 +664,22 @@ export class CropExplorer {
   }
 }
 
+function creditItem(crop) {
+  const { credit } = crop.image;
+  const licence = credit.licence_url
+    ? h("a", { href: credit.licence_url, rel: "license noopener" }, credit.licence)
+    : credit.licence;
+  return h(
+    "li",
+    {},
+    `${crop.names.common}: `,
+    h("a", { href: credit.source_url, rel: "noopener" }, credit.title.replace(/^File:/, "")),
+    ` by ${credit.author}, `,
+    licence,
+    ", via Wikimedia Commons.",
+  );
+}
+
 function segmentedOption(name, { value, label }) {
   const id = `${name}-${value}`;
   return h(
@@ -595,8 +690,15 @@ function segmentedOption(name, { value, label }) {
   );
 }
 
-function taxonNode(crop) {
-  return h("span", { class: "taxon" }, h("i", {}, scientificName(crop)), ` ${crop.taxon.authority}`);
+function taxonNode(crop, withAuthority) {
+  const { genus, species, infraspecific, authority } = crop.taxon;
+  const parts = [h("i", {}, `${genus} ${species}`)];
+  if (infraspecific) {
+    const [rank, epithet] = infraspecific.split(" ");
+    parts.push(` ${rank} `, h("i", {}, epithet));
+  }
+  if (withAuthority) parts.push(` ${authority}`);
+  return h("span", { class: "taxon", title: scientificName(crop) }, parts);
 }
 
 function capitalise(text) {

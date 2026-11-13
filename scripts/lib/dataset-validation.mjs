@@ -7,6 +7,7 @@
  * @module dataset-validation
  */
 
+import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
@@ -14,6 +15,7 @@ import { qualityChecks } from "../../assets/js/nutrition.js";
 
 export const DATASET_URL = new URL("../../data/andean-crops.json", import.meta.url);
 export const SCHEMA_URL = new URL("../../data/andean-crops.schema.json", import.meta.url);
+const REPO_ROOT = new URL("../../", import.meta.url);
 
 /** Upper plausibility bounds per 100 g edible portion, by unit. */
 const UNIT_MAXIMA = Object.freeze({ g: 100, mg: 100_000, kcal: 900 });
@@ -87,10 +89,15 @@ export function validateIntegrity(dataset) {
   for (const crop of dataset.crops) {
     const where = `crop "${crop.id}"`;
     const { composition } = crop;
-    cite(composition.source, `${where} composition`);
+    const pending = composition.status === "pending";
+    if (!pending) cite(composition.source, `${where} composition`);
     const recordSource = sources.get(composition.source);
 
-    if (composition.match !== "unknown" && recordSource?.type === "internal") {
+    if (crop.image && !existsSync(new URL(crop.image.file, REPO_ROOT))) {
+      errors.push(`${where}: image file ${crop.image.file} is missing`);
+    }
+
+    if (!pending && composition.match !== "unknown" && recordSource?.type === "internal") {
       errors.push(`${where}: match "${composition.match}" requires an identified source`);
     }
     const hasProxyFlag = crop.flags.some((flag) => flag.code === "proxy-match");

@@ -14,11 +14,28 @@ describe("shipped dataset", () => {
     assert.deepEqual(errorsOf(loadDataset()), []);
   });
 
-  it("reports every core proximate component for every crop", () => {
-    for (const record of loadDataset().crops) {
-      for (const id of ["energy", "protein", "fat", "carbohydrate_total", "fibre"]) {
+  it("reports energy, protein and total carbohydrate for every crop with composition data", () => {
+    for (const record of loadDataset().crops.filter((c) => c.composition.status !== "pending")) {
+      for (const id of ["energy", "protein", "carbohydrate_total"]) {
         assert.ok(record.composition.values[id], `${record.id} lacks ${id}`);
       }
+    }
+  });
+
+  it("marks crops without sourced values as pending, with a note and no values", () => {
+    const pending = loadDataset().crops.filter((c) => c.composition.status === "pending");
+    assert.ok(pending.length > 0);
+    for (const record of pending) {
+      assert.deepEqual(record.composition.values, {});
+      assert.ok(record.composition.note.length > 20);
+    }
+  });
+
+  it("credits every photo with an author, licence and Commons source page", () => {
+    for (const record of loadDataset().crops.filter((c) => c.image)) {
+      const { credit } = record.image;
+      assert.ok(credit.author && credit.licence, `${record.id} photo lacks attribution`);
+      assert.match(credit.source_url, /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
     }
   });
 
@@ -72,6 +89,18 @@ describe("validator catches defects", () => {
     const dataset = loadDataset();
     crop(dataset, "quinoa").composition.values.fibre.value = 70;
     assert.ok(errorsOf(dataset).some((error) => error.includes('"fibre-within-carbohydrate" failed')));
+  });
+
+  it("rejects pending records that carry values, and missing photo files", () => {
+    const dataset = loadDataset();
+    const pending = dataset.crops.find((c) => c.composition.status === "pending");
+    pending.composition.values = { energy: { value: 1, verification: "unverified" } };
+    assert.ok(validateSchema(dataset, schema).length > 0);
+
+    const withPhoto = loadDataset();
+    const record = withPhoto.crops.find((c) => c.image);
+    record.image.file = "assets/img/crops/does-not-exist.webp";
+    assert.ok(errorsOf(withPhoto).some((error) => error.includes("image file")));
   });
 
   it("rejects implausible magnitudes", () => {

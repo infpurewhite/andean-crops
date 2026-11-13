@@ -292,11 +292,21 @@ function checkMacronutrientTotal(crop) {
 }
 
 /**
+ * Whether a record's composition is still pending (no values entered yet).
+ *
+ * @param {object} crop Crop record.
+ * @returns {boolean}
+ */
+export function isPending(crop) {
+  return crop?.composition?.status === "pending";
+}
+
+/**
  * Count values by verification level and summarise the record.
  *
  * @param {object} crop Crop record.
  * @returns {{total: number, verified: number, corroborated: number, unverified: number,
- *   level: "verified"|"corroborated"|"partial"|"unverified"}}
+ *   level: "verified"|"corroborated"|"partial"|"unverified"|"pending"}}
  */
 export function verificationSummary(crop) {
   const entries = Object.values(crop?.composition?.values ?? {});
@@ -306,7 +316,8 @@ export function verificationSummary(crop) {
   }
   const total = entries.length;
   let level = "partial";
-  if (total === 0 || counts.unverified === total) level = "unverified";
+  if (total === 0) level = isPending(crop) ? "pending" : "unverified";
+  else if (counts.unverified === total) level = "unverified";
   else if (counts.verified === total) level = "verified";
   else if (counts.unverified === 0) level = "corroborated";
   return { total, ...counts, level };

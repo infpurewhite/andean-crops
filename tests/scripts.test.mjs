@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { RUNTIME_FILES, SOURCE_MARKER, assertSafeTarget } from "../scripts/lib/site-files.mjs";
+import { RUNTIME_DIRECTORIES, RUNTIME_FILES, SOURCE_MARKER, assertSafeTarget } from "../scripts/lib/site-files.mjs";
 import { CSV_COLUMNS, csvField, tidyRows, toCsv } from "../scripts/lib/tidy-export.mjs";
 import { compareWithCrossref, crossrefYear, normaliseTitle, titleSimilarity } from "../scripts/lib/crossref.mjs";
 import { resolveRequestPath } from "../scripts/lib/static-path.mjs";
@@ -89,6 +89,12 @@ describe("site copy", () => {
     const html = readFileSync(join(repoRoot, "index.html"), "utf8");
     for (const [, path] of html.matchAll(/(?:src|href)="((?:assets|data)\/[^"]+)"/g)) {
       assert.ok(listed.has(path), `index.html references ${path}, which is not in RUNTIME_FILES`);
+    }
+    for (const crop of loadDataset().crops.filter((c) => c.image)) {
+      assert.ok(
+        RUNTIME_DIRECTORIES.some((directory) => crop.image.file.startsWith(`${directory}/`)),
+        `${crop.image.file} is outside the copied directories`,
+      );
     }
     for (const file of RUNTIME_FILES.filter((f) => f.startsWith("assets/js/"))) {
       const source = readFileSync(join(repoRoot, file), "utf8");

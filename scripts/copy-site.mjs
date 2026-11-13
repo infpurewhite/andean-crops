@@ -10,10 +10,11 @@
  */
 
 import { execFileSync } from "node:child_process";
-import { copyFile, mkdir, writeFile } from "node:fs/promises";
+import { copyFile, cp, mkdir, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { RUNTIME_FILES, SOURCE_MARKER, assertSafeTarget } from "./lib/site-files.mjs";
+import { RUNTIME_DIRECTORIES, RUNTIME_FILES, SOURCE_MARKER, assertSafeTarget } from "./lib/site-files.mjs";
 
 const ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const REPOSITORY_URL = "https://github.com/infpurewhite/andean-crops";
@@ -43,6 +44,11 @@ async function main() {
     await mkdir(dirname(destination), { recursive: true });
     await copyFile(join(ROOT, file), destination);
   }
+  for (const directory of RUNTIME_DIRECTORIES) {
+    if (existsSync(join(ROOT, directory))) {
+      await cp(join(ROOT, directory), join(target, directory), { recursive: true });
+    }
+  }
   const commit = sourceCommit();
   await writeFile(
     join(target, SOURCE_MARKER),
@@ -55,7 +61,7 @@ async function main() {
     ].join("\n"),
     "utf8",
   );
-  console.log(`Copied ${RUNTIME_FILES.length} files to ${target} (source commit ${commit}).`);
+  console.log(`Copied ${RUNTIME_FILES.length} files and ${RUNTIME_DIRECTORIES.join(", ")} to ${target} (source commit ${commit}).`);
 }
 
 main().catch((error) => {

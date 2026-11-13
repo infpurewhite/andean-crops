@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { BASES } from "../assets/js/nutrition.js";
+import { BASES, expressValue } from "../assets/js/nutrition.js";
 import {
   DEFAULT_STATE,
   distinctConditions,
@@ -8,6 +8,7 @@ import {
   hasIdentifiedSource,
   normaliseText,
   parseState,
+  scientificName,
   serialiseState,
   sortCrops,
 } from "../assets/js/catalogue.js";
@@ -42,20 +43,29 @@ describe("filterCrops", () => {
   });
 
   it("filters by crop group and by source status", () => {
-    assert.deepEqual(ids(filterCrops(crops, { group: "root_tuber" })), ["maca", "mashua", "oca"]);
-    assert.deepEqual(ids(filterCrops(crops, { sourcedOnly: true })), ["quinoa", "kiwicha"]);
-    assert.ok(crops.filter(hasIdentifiedSource).length === 2);
+    assert.deepEqual(ids(filterCrops(crops, { group: "vegetable" })), ["aji-amarillo", "rocoto"]);
+    assert.ok(filterCrops(crops, { group: "fruit" }).every((crop) => crop.crop_group === "fruit"));
+    const sourced = ids(filterCrops(crops, { sourcedOnly: true }));
+    assert.deepEqual(sourced, ids(crops.filter(hasIdentifiedSource)));
+    assert.ok(sourced.includes("quinoa") && sourced.includes("peanut"));
+    assert.ok(!sourced.includes("oca"), "unverified records are excluded");
+    assert.ok(!sourced.includes("ulluco"), "pending records are excluded");
+  });
+
+  it("searches infraspecific names and alternative names", () => {
+    assert.deepEqual(ids(filterCrops(crops, { query: "mollissima" })), ["tumbo"]);
+    assert.deepEqual(ids(filterCrops(crops, { query: "aguaymanto" })), ["cape-gooseberry"]);
   });
 });
 
 describe("sortCrops", () => {
   it("sorts by name by default", () => {
-    assert.equal(sortCrops(crops, "name", BASES.AS_DESCRIBED)[0].id, "canihua");
+    assert.equal(sortCrops(crops, "name", BASES.AS_DESCRIBED)[0].id, "achira");
   });
 
   it("sorts components in the requested direction on the active basis", () => {
     assert.equal(sortCrops(crops, "protein-desc", BASES.AS_DESCRIBED)[0].id, "tarwi");
-    assert.equal(sortCrops(crops, "energy-asc", BASES.AS_DESCRIBED)[0].id, "mashua");
+    assert.equal(sortCrops(crops, "energy-asc", BASES.AS_DESCRIBED)[0].id, "naranjilla");
   });
 
   it("changes ranking when values are expressed per 100 kcal", () => {
@@ -66,10 +76,16 @@ describe("sortCrops", () => {
     assert.ok(perEnergy.indexOf("oca") < asDescribed.indexOf("oca"));
   });
 
-  it("places records without a value on the basis last", () => {
-    const sorted = ids(sortCrops(crops, "protein-desc", BASES.DRY_MATTER));
-    assert.equal(sorted[0], "quinoa", "only quinoa reports water");
-    assert.deepEqual(sorted.slice(1), [...sorted.slice(1)].sort((a, b) => a.localeCompare(b)));
+  it("places records without a value on the basis last, in name order", () => {
+    const sorted = sortCrops(crops, "protein-desc", BASES.DRY_MATTER);
+    const values = sorted.map((crop) => expressValue(crop, "protein", BASES.DRY_MATTER));
+    const firstMissing = values.indexOf(null);
+    assert.ok(firstMissing > 0, "some crops report water");
+    assert.ok(values.slice(firstMissing).every((value) => value === null));
+    const withValues = values.slice(0, firstMissing);
+    assert.deepEqual(withValues, [...withValues].sort((a, b) => b - a));
+    const missingNames = sorted.slice(firstMissing).map((crop) => crop.names.common);
+    assert.deepEqual(missingNames, [...missingNames].sort((a, b) => a.localeCompare(b, "en-GB", { sensitivity: "base" })));
   });
 
   it("sorts energy per 100 g when the basis is per 100 kcal", () => {
@@ -84,6 +100,14 @@ describe("sortCrops", () => {
     sortCrops(crops, "protein-desc", BASES.AS_DESCRIBED);
     assert.deepEqual(ids(crops), before);
     assert.throws(() => sortCrops(crops, "colour", BASES.AS_DESCRIBED), RangeError);
+  });
+});
+
+describe("scientificName", () => {
+  it("includes infraspecific ranks when present", () => {
+    const byId = Object.fromEntries(crops.map((crop) => [crop.id, crop]));
+    assert.equal(scientificName(byId.quinoa), "Chenopodium quinoa");
+    assert.equal(scientificName(byId.tumbo), "Passiflora tripartita var. mollissima");
   });
 });
 

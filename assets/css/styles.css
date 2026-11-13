@@ -454,6 +454,8 @@ main {
 .tag--cereal       { background-color: #f7e6eb; color: #771c35; }
 .tag--grain_legume { background-color: #e2ece5; color: #1b5834; }
 .tag--root_tuber   { background-color: #f0eaf5; color: #4b276e; }
+.tag--fruit        { background-color: #fde8de; color: #8a3413; }
+.tag--vegetable    { background-color: #e6eef8; color: #1f4a7a; }
 
 .status--positive { background-color: var(--c-positive-bg); color: var(--c-positive-ink); }
 .status--caution  { background-color: var(--c-caution-bg); color: var(--c-caution-ink); }
@@ -559,6 +561,63 @@ main {
   font-size: 0.85em;
   color: var(--c-ink-muted);
 }
+
+/* Photos */
+
+.crop-card__media {
+  margin: -1.4rem -1.5rem 0;
+}
+
+.crop-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background-color: var(--c-surface-alt);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.crop-card__media figcaption {
+  padding: 0.35rem 1.5rem 0;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  color: var(--c-ink-muted);
+  overflow-wrap: anywhere;
+}
+
+.crop-card__media figcaption a {
+  color: inherit;
+}
+
+.table-thumb {
+  display: block;
+  width: 56px;
+  height: 42px;
+  margin-bottom: 0.3rem;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background-color: var(--c-surface-alt);
+}
+
+/* Pending composition */
+
+.pending {
+  padding: 0.85rem 1rem;
+  font-size: 0.84rem;
+  color: var(--c-ink-muted);
+  background-color: var(--c-surface-alt);
+  border: 1px dashed var(--c-border-strong);
+  border-radius: var(--radius-sm);
+}
+
+.pending__title {
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+  color: var(--c-ink);
+}
+
+.status--neutral { background-color: var(--c-surface-alt); color: var(--c-ink); border: 1px solid var(--c-border); }
 
 /* Notes and citations */
 

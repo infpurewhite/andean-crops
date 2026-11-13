@@ -8,6 +8,7 @@ import {
   expressValue,
   formatNumber,
   getValue,
+  isPending,
   perEnergy,
   proximateSum,
   qualityChecks,
@@ -172,8 +173,12 @@ describe("verificationSummary", () => {
     });
   });
 
-  it("treats a record without values as unverified", () => {
+  it("treats a record without values as unverified unless it is marked pending", () => {
     assert.equal(verificationSummary(makeCrop({})).level, "unverified");
+    const pending = makeCrop({}, { composition: { status: "pending", note: "No source yet.", values: {} } });
+    assert.equal(isPending(pending), true);
+    assert.equal(verificationSummary(pending).level, "pending");
+    assert.equal(isPending(makeCrop(QUINOA)), false);
   });
 });
 

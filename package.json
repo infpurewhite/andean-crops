@@ -1,6 +1,6 @@
 {
   "name": "andean-crops",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Nutrient composition explorer and curated dataset for eight Andean crops, with per-value provenance and data-quality checks.",
   "private": true,
   "type": "module",

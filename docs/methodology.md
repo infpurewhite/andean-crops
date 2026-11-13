@@ -1,10 +1,10 @@
 # Methodology
 
-This document specifies how the dataset is structured, how values are expressed and checked, and what the verification levels mean. It applies to dataset version 0.2.0.
+This document specifies how the dataset is structured, how values are expressed and checked, and what the verification levels mean. It applies to dataset version 0.3.0.
 
 ## 1. Scope and unit of observation
 
-The unit of observation is a **crop record**: one Andean crop species, represented by one food (a defined edible part in a defined state) and one set of composition values per 100 g edible portion. Version 0.2.0 covers eight crops in four crop groups and nine components.
+The unit of observation is a **crop record**: one Andean crop species, represented by one food (a defined edible part in a defined state) and one set of composition values per 100 g edible portion. Version 0.3.0 covers 30 crops in six crop groups and nine components. Fifteen crops have composition values; the other fifteen are recorded with their composition marked as pending (Section 6.4).
 
 A record describes the food in the state given by its source, which is not necessarily the state in which it is eaten. For example, tarwi is reported as dry seed, but it is eaten only after debittering and cooking.
 
@@ -21,11 +21,12 @@ The canonical file is `data/andean-crops.json`, validated by `data/andean-crops.
 
 Each crop record contains:
 
-- `taxon`: genus, species, authority and family (APG IV family names), plus an optional note on name usage;
-- `crop_group`: `pseudocereal`, `cereal`, `grain_legume` or `root_tuber`;
-- `edible_part`: `seed`, `kernel`, `hypocotyl` or `tuber`;
+- `taxon`: genus, species, optional infraspecific rank and epithet (for example `var. mollissima`), authority and family (APG IV family names), plus an optional note on name usage;
+- `crop_group`: `pseudocereal`, `cereal`, `grain_legume`, `root_tuber`, `fruit` or `vegetable`;
+- `edible_part`: `seed`, `kernel`, `hypocotyl`, `tuber`, `root`, `rhizome` or `fruit`;
 - `food`: the source's food description and its `condition`. `dry` is a naturally low-moisture seed or grain; `dried` is dehydrated from fresh tissue; `fresh` is as harvested;
-- `composition`: the record-level `source`, the identifier of the source record (`source_record`), the food `match` (`direct`, `proxy` or `unknown`) and the `values`. Each value has a number, an optional per-value `source` that overrides the record-level source, and a `verification` level;
+- `composition`: either (a) the record-level `source`, the identifier of the source record (`source_record`), the food `match` (`direct`, `proxy` or `unknown`) and the `values`, where each value has a number, an optional per-value `source` that overrides the record-level source, a `verification` level and an optional note; or (b) `status: "pending"` with a `note` and no values;
+- `image` (optional): a local WebP photograph with alt text, dimensions and a `credit` (Commons file title, author, licence, licence URL and Commons page);
 - `notes`: typed statements (`bioactive`, `antinutrient`, `processing`, `context`), each with citation identifiers (`refs`) and a `checked` flag;
 - `flags`: record-level warnings (`proxy-match`, `composite-suspected`, `not-eaten-raw`).
 
@@ -92,7 +93,7 @@ Where water and ash are reported, *w* + *P* + *F* + *C* + ash is expected to lie
 | `corroborated` | Matches the named source record as reproduced by at least one independent secondary copy; the primary record was not accessed. |
 | `unverified` | Source not identified, or value not checked against any source. |
 
-In version 0.2.0 no value is `verified`. The 16 `corroborated` values (quinoa, kiwicha) were compared on 13 November 2026 with secondary copies of USDA FoodData Central records found by web search. Direct access to FoodData Central, Crossref and the Peruvian national food tables was not available from the curation environment. For quinoa, water and ash were corroborated by converting a per-cup listing (170 g) to per-100 g values.
+In version 0.3.0 no value is `verified`. The 66 `corroborated` values (nine crops) were compared on 13 November 2026 with secondary copies of USDA FoodData Central records found by web search, because the FoodData Central API could not be used from the curation environment. A value was entered only when a secondary copy reported it for the exact source record. Values that were missing, or that copies reported inconsistently, were left out (for example cherimoya fat and naranjilla fibre). Where a value was corroborated by scaling a per-serving listing to 100 g, the value carries a note saying so.
 
 ### 6.2 Rules enforced by validation
 
@@ -105,7 +106,15 @@ In version 0.2.0 no value is `verified`. The 16 `corroborated` values (quinoa, k
 
 ### 6.3 Bibliographic records
 
-`record_check` documents how each reference was confirmed: `indexed-record` (a bibliographic index or publisher listing, such as PubMed or AGRIS), `secondary-reference` (the reference list of another work), `not-checked` or `not-applicable`. `npm run check:references` compares DOIs with Crossref (title, year, first author, volume) whenever internet access is available.
+`record_check` documents how each reference was confirmed: `crossref` (title, year, first author and volume match the Crossref record for the DOI), `indexed-record` (a bibliographic index or publisher listing, such as PubMed or AGRIS), `secondary-reference` (the reference list of another work), `not-checked` or `not-applicable`. All 11 DOIs were checked with `npm run check:references` on 13 November 2026. Behind an HTTP proxy, Node.js needs `NODE_USE_ENV_PROXY=1` for this check.
+
+### 6.4 Pending composition
+
+A crop is listed with `composition.status: "pending"` when no documented source could be accessed. Its card shows the crop, its food state and a photograph, but no values. Validation rejects pending records that carry values. No value is ever estimated, copied from a product label or taken from memory to fill a gap.
+
+### 6.5 Photographs
+
+Photographs come from Wikimedia Commons and are limited to CC0, public-domain, CC BY and CC BY-SA files. Each candidate was checked visually against the species and the edible product; for example, images labelled "lúcuma" that showed canistel (*Pouteria campechiana*) were rejected. Author and licence were read from the file's description page. Images are resized to 720 px wide and converted to WebP. The original licence applies to each image, and attribution is shown on the card and in the photo-credits list.
 
 ## 7. Notes on bioactive compounds and antinutrients
 
@@ -117,7 +126,8 @@ Names are binomials with author abbreviations; families follow APG IV (for examp
 
 ## 9. Threats to validity and limitations
 
-- **Source validity.** Six of eight records have no documented source, and the maca record appears to combine commercial label declarations with values of unknown origin. These values are provisional and are labelled as such.
+- **Source validity.** Six records have no documented source, and the maca record appears to combine commercial label declarations with values of unknown origin. These values are provisional and labelled as such. Fifteen further records have no values yet (pending).
+- **Coverage.** USDA SR Legacy describes market foods (for example cranberry-type beans or unspecified potato cultivars), which may differ from Andean landraces. Several USDA-derived records are incomplete because only corroborated values were entered.
 - **Construct validity.** Composition per 100 g of raw or dried food is not nutritional value as eaten. Processing (debittering, washing, sun exposure, cooking), edible-portion definitions and bioavailability (for example, iron with phytate, or calcium with oxalate) all intervene.
 - **Variability.** Single values hide variation between genotypes, growing environments and seasons. No ranges, sample sizes or uncertainty estimates are available yet.
 - **Method heterogeneity.** Fibre (total dietary versus crude), fat-extraction methods and nitrogen-to-protein factors may differ between sources and are mostly undocumented.

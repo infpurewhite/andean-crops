@@ -5,13 +5,40 @@
   "description": "Structure of data/andean-crops.json. Cross-references (component, source and crop identifiers) are checked by scripts/lib/dataset-validation.mjs, not by this schema.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["metadata", "components", "sources", "crops"],
+  "required": [
+    "metadata",
+    "components",
+    "sources",
+    "crops"
+  ],
   "properties": {
-    "$schema": { "type": "string" },
-    "metadata": { "$ref": "#/$defs/metadata" },
-    "components": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/component" } },
-    "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/source" } },
-    "crops": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/crop" } }
+    "$schema": {
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/component"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "crops": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/crop"
+      }
+    }
   },
   "$defs": {
     "slug": {
@@ -30,21 +57,51 @@
     "metadata": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["title", "version", "date", "description", "basis", "verification_levels", "methods"],
+      "required": [
+        "title",
+        "version",
+        "date",
+        "description",
+        "basis",
+        "verification_levels",
+        "methods"
+      ],
       "properties": {
-        "title": { "$ref": "#/$defs/nonEmptyText" },
-        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
-        "date": { "type": "string", "format": "date" },
-        "description": { "$ref": "#/$defs/nonEmptyText" },
-        "basis": { "$ref": "#/$defs/nonEmptyText" },
+        "title": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "description": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "basis": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
         "verification_levels": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["verified", "corroborated", "unverified"],
+          "required": [
+            "verified",
+            "corroborated",
+            "unverified"
+          ],
           "properties": {
-            "verified": { "$ref": "#/$defs/nonEmptyText" },
-            "corroborated": { "$ref": "#/$defs/nonEmptyText" },
-            "unverified": { "$ref": "#/$defs/nonEmptyText" }
+            "verified": {
+              "$ref": "#/$defs/nonEmptyText"
+            },
+            "corroborated": {
+              "$ref": "#/$defs/nonEmptyText"
+            },
+            "unverified": {
+              "$ref": "#/$defs/nonEmptyText"
+            }
           }
         },
         "methods": {
@@ -52,11 +109,25 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "text", "refs"],
+            "required": [
+              "id",
+              "text",
+              "refs"
+            ],
             "properties": {
-              "id": { "$ref": "#/$defs/slug" },
-              "text": { "$ref": "#/$defs/nonEmptyText" },
-              "refs": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/slug" } }
+              "id": {
+                "$ref": "#/$defs/slug"
+              },
+              "text": {
+                "$ref": "#/$defs/nonEmptyText"
+              },
+              "refs": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "#/$defs/slug"
+                }
+              }
             }
           }
         }
@@ -65,15 +136,48 @@
     "component": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "label", "unit", "infoods", "group", "decimals", "description"],
+      "required": [
+        "id",
+        "label",
+        "unit",
+        "infoods",
+        "group",
+        "decimals",
+        "description"
+      ],
       "properties": {
-        "id": { "$ref": "#/$defs/componentId" },
-        "label": { "$ref": "#/$defs/nonEmptyText" },
-        "unit": { "enum": ["g", "mg", "kcal"] },
-        "infoods": { "type": "string", "pattern": "^[A-Z]+$" },
-        "group": { "enum": ["energy", "proximate", "mineral"] },
-        "decimals": { "type": "integer", "minimum": 0, "maximum": 3 },
-        "description": { "$ref": "#/$defs/nonEmptyText" }
+        "id": {
+          "$ref": "#/$defs/componentId"
+        },
+        "label": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "unit": {
+          "enum": [
+            "g",
+            "mg",
+            "kcal"
+          ]
+        },
+        "infoods": {
+          "type": "string",
+          "pattern": "^[A-Z]+$"
+        },
+        "group": {
+          "enum": [
+            "energy",
+            "proximate",
+            "mineral"
+          ]
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "description": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
       }
     },
     "author": {
@@ -81,18 +185,29 @@
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["family", "given"],
+          "required": [
+            "family",
+            "given"
+          ],
           "properties": {
-            "family": { "$ref": "#/$defs/nonEmptyText" },
-            "given": { "$ref": "#/$defs/nonEmptyText" }
+            "family": {
+              "$ref": "#/$defs/nonEmptyText"
+            },
+            "given": {
+              "$ref": "#/$defs/nonEmptyText"
+            }
           }
         },
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["literal"],
+          "required": [
+            "literal"
+          ],
           "properties": {
-            "literal": { "$ref": "#/$defs/nonEmptyText" }
+            "literal": {
+              "$ref": "#/$defs/nonEmptyText"
+            }
           }
         }
       ]
@@ -100,61 +215,186 @@
     "source": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "type", "authors", "year", "title", "record_check"],
+      "required": [
+        "id",
+        "type",
+        "authors",
+        "year",
+        "title",
+        "record_check"
+      ],
       "properties": {
-        "id": { "$ref": "#/$defs/slug" },
-        "type": { "enum": ["article", "book", "report", "guideline", "database", "internal"] },
-        "authors": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/author" } },
-        "year": { "type": ["integer", "null"], "minimum": 1800, "maximum": 2100 },
-        "title": { "$ref": "#/$defs/nonEmptyText" },
-        "container": { "$ref": "#/$defs/nonEmptyText" },
-        "volume": { "$ref": "#/$defs/nonEmptyText" },
-        "issue": { "$ref": "#/$defs/nonEmptyText" },
-        "pages": { "$ref": "#/$defs/nonEmptyText" },
-        "edition": { "$ref": "#/$defs/nonEmptyText" },
-        "publisher": { "$ref": "#/$defs/nonEmptyText" },
-        "place": { "$ref": "#/$defs/nonEmptyText" },
-        "doi": { "type": "string", "pattern": "^10\\.\\d{4,9}/\\S+$" },
-        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "type": {
+          "enum": [
+            "article",
+            "book",
+            "report",
+            "guideline",
+            "database",
+            "internal"
+          ]
+        },
+        "authors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/author"
+          }
+        },
+        "year": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1800,
+          "maximum": 2100
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "container": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "volume": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "issue": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "pages": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "edition": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "publisher": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "place": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "doi": {
+          "type": "string",
+          "pattern": "^10\\.\\d{4,9}/\\S+$"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
         "record_check": {
-          "description": "How the bibliographic record was checked: indexed-record (bibliographic index or publisher listing), secondary-reference (reference list of another work), not-checked, or not-applicable (internal provenance marker).",
-          "enum": ["indexed-record", "secondary-reference", "not-checked", "not-applicable"]
+          "description": "How the bibliographic record was checked: crossref (title, year, first author and volume match Crossref metadata for the DOI), indexed-record (bibliographic index or publisher listing), secondary-reference (reference list of another work), not-checked, or not-applicable (internal provenance marker).",
+          "enum": [
+            "crossref",
+            "indexed-record",
+            "secondary-reference",
+            "not-checked",
+            "not-applicable"
+          ]
         }
       },
       "allOf": [
         {
-          "if": { "properties": { "type": { "const": "article" } } },
-          "then": { "required": ["container", "volume", "pages"] }
+          "if": {
+            "properties": {
+              "type": {
+                "const": "article"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "container",
+              "volume",
+              "pages"
+            ]
+          }
         },
         {
-          "if": { "properties": { "type": { "const": "internal" } } },
-          "then": { "properties": { "record_check": { "const": "not-applicable" } } },
-          "else": { "properties": { "year": { "type": "integer" } } }
+          "if": {
+            "properties": {
+              "type": {
+                "const": "internal"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "record_check": {
+                "const": "not-applicable"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "year": {
+                "type": "integer"
+              }
+            }
+          }
         }
       ]
     },
     "valueEntry": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["value", "verification"],
+      "required": [
+        "value",
+        "verification"
+      ],
       "properties": {
-        "value": { "type": "number", "minimum": 0 },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
         "source": {
           "description": "Overrides composition.source for this value.",
           "$ref": "#/$defs/slug"
         },
-        "verification": { "enum": ["verified", "corroborated", "unverified"] },
-        "note": { "$ref": "#/$defs/nonEmptyText" }
+        "verification": {
+          "enum": [
+            "verified",
+            "corroborated",
+            "unverified"
+          ]
+        },
+        "note": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
       }
     },
     "note": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["kind", "text", "refs", "checked"],
+      "required": [
+        "kind",
+        "text",
+        "refs",
+        "checked"
+      ],
       "properties": {
-        "kind": { "enum": ["bioactive", "antinutrient", "processing", "context"] },
-        "text": { "type": "string", "minLength": 10 },
-        "refs": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/slug" } },
+        "kind": {
+          "enum": [
+            "bioactive",
+            "antinutrient",
+            "processing",
+            "context"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 10
+        },
+        "refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/slug"
+          }
+        },
         "checked": {
           "description": "True if the statement was checked against the cited source (at least its abstract) during curation.",
           "type": "boolean"
@@ -164,72 +404,275 @@
     "flag": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["code", "text"],
+      "required": [
+        "code",
+        "text"
+      ],
       "properties": {
-        "code": { "enum": ["proxy-match", "composite-suspected", "not-eaten-raw"] },
-        "text": { "$ref": "#/$defs/nonEmptyText" }
+        "code": {
+          "enum": [
+            "proxy-match",
+            "composite-suspected",
+            "not-eaten-raw"
+          ]
+        },
+        "text": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
       }
     },
     "crop": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "names", "taxon", "crop_group", "edible_part", "food", "composition", "notes", "flags"],
+      "required": [
+        "id",
+        "names",
+        "taxon",
+        "crop_group",
+        "edible_part",
+        "food",
+        "composition",
+        "notes",
+        "flags"
+      ],
       "properties": {
-        "id": { "$ref": "#/$defs/slug" },
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
         "names": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["common", "alternative"],
+          "required": [
+            "common",
+            "alternative"
+          ],
           "properties": {
-            "common": { "$ref": "#/$defs/nonEmptyText" },
-            "alternative": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/nonEmptyText" } }
+            "common": {
+              "$ref": "#/$defs/nonEmptyText"
+            },
+            "alternative": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/nonEmptyText"
+              }
+            }
           }
         },
         "taxon": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["genus", "species", "authority", "family"],
+          "required": [
+            "genus",
+            "species",
+            "authority",
+            "family"
+          ],
           "properties": {
-            "genus": { "type": "string", "pattern": "^[A-Z][a-z]+$" },
-            "species": { "type": "string", "pattern": "^[a-z]+(?:-[a-z]+)?$" },
-            "authority": { "$ref": "#/$defs/nonEmptyText" },
-            "family": { "type": "string", "pattern": "^[A-Z][a-z]+aceae$" },
-            "note": { "$ref": "#/$defs/nonEmptyText" }
-          }
-        },
-        "crop_group": { "enum": ["pseudocereal", "cereal", "grain_legume", "root_tuber"] },
-        "edible_part": { "enum": ["seed", "kernel", "hypocotyl", "tuber"] },
-        "food": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["description", "condition"],
-          "properties": {
-            "description": { "$ref": "#/$defs/nonEmptyText" },
-            "condition": {
-              "description": "dry: naturally low-moisture seed or grain; dried: dehydrated from fresh tissue; fresh: as harvested.",
-              "enum": ["dry", "dried", "fresh"]
+            "genus": {
+              "type": "string",
+              "pattern": "^[A-Z][a-z]+$"
             },
-            "note": { "$ref": "#/$defs/nonEmptyText" }
-          }
-        },
-        "composition": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["source", "match", "values"],
-          "properties": {
-            "source": { "$ref": "#/$defs/slug" },
-            "source_record": { "$ref": "#/$defs/nonEmptyText" },
-            "match": { "enum": ["direct", "proxy", "unknown"] },
-            "values": {
-              "type": "object",
-              "minProperties": 1,
-              "propertyNames": { "$ref": "#/$defs/componentId" },
-              "additionalProperties": { "$ref": "#/$defs/valueEntry" }
+            "species": {
+              "type": "string",
+              "pattern": "^[a-z]+(?:-[a-z]+)?$"
+            },
+            "authority": {
+              "$ref": "#/$defs/nonEmptyText"
+            },
+            "family": {
+              "type": "string",
+              "pattern": "^[A-Z][a-z]+aceae$"
+            },
+            "note": {
+              "$ref": "#/$defs/nonEmptyText"
+            },
+            "infraspecific": {
+              "description": "Infraspecific rank and epithet, e.g. 'var. mollissima'; the authority then applies to it.",
+              "type": "string",
+              "pattern": "^(subsp|var|f)\\. [a-z]+(?:-[a-z]+)?$"
             }
           }
         },
-        "notes": { "type": "array", "items": { "$ref": "#/$defs/note" } },
-        "flags": { "type": "array", "items": { "$ref": "#/$defs/flag" } }
+        "crop_group": {
+          "enum": [
+            "pseudocereal",
+            "cereal",
+            "grain_legume",
+            "root_tuber",
+            "fruit",
+            "vegetable"
+          ]
+        },
+        "edible_part": {
+          "enum": [
+            "seed",
+            "kernel",
+            "hypocotyl",
+            "tuber",
+            "root",
+            "rhizome",
+            "fruit"
+          ]
+        },
+        "food": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "description",
+            "condition"
+          ],
+          "properties": {
+            "description": {
+              "$ref": "#/$defs/nonEmptyText"
+            },
+            "condition": {
+              "description": "dry: naturally low-moisture seed or grain; dried: dehydrated from fresh tissue; fresh: as harvested.",
+              "enum": [
+                "dry",
+                "dried",
+                "fresh"
+              ]
+            },
+            "note": {
+              "$ref": "#/$defs/nonEmptyText"
+            }
+          }
+        },
+        "composition": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "source",
+                "match",
+                "values"
+              ],
+              "properties": {
+                "source": {
+                  "$ref": "#/$defs/slug"
+                },
+                "source_record": {
+                  "$ref": "#/$defs/nonEmptyText"
+                },
+                "match": {
+                  "enum": [
+                    "direct",
+                    "proxy",
+                    "unknown"
+                  ]
+                },
+                "values": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "propertyNames": {
+                    "$ref": "#/$defs/componentId"
+                  },
+                  "additionalProperties": {
+                    "$ref": "#/$defs/valueEntry"
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "status",
+                "note",
+                "values"
+              ],
+              "properties": {
+                "status": {
+                  "const": "pending"
+                },
+                "note": {
+                  "$ref": "#/$defs/nonEmptyText"
+                },
+                "values": {
+                  "type": "object",
+                  "maxProperties": 0
+                }
+              }
+            }
+          ]
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/note"
+          }
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/flag"
+          }
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        }
+      }
+    },
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "alt",
+        "width",
+        "height",
+        "credit"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "pattern": "^assets/img/crops/[a-z0-9-]+\\.(webp|jpg)$"
+        },
+        "alt": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 100
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 100
+        },
+        "credit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "author",
+            "licence",
+            "source_url"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "pattern": "^File:"
+            },
+            "author": {
+              "$ref": "#/$defs/nonEmptyText"
+            },
+            "licence": {
+              "$ref": "#/$defs/nonEmptyText"
+            },
+            "licence_url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            },
+            "source_url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://commons\\.wikimedia\\.org/"
+            }
+          }
+        }
       }
     }
   }

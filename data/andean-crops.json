@@ -2,7 +2,7 @@
   "$schema": "./andean-crops.schema.json",
   "metadata": {
     "title": "Andean crops nutrient composition dataset",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "date": "2026-11-13",
     "description": "Proximate composition, energy and selected minerals of eight Andean crops, with per-value provenance and verification status.",
     "basis": "All values are per 100 g edible portion of the food in the state described for each crop (dry seed or kernel, dried hypocotyl or fresh tuber). Values are not comparable across these states without conversion.",
@@ -20,17 +20,24 @@
       {
         "id": "food-matching",
         "text": "Each record states whether the source food matches the crop directly or is a proxy (for example, a source that does not specify the species).",
-        "refs": ["fao-infoods-2012-matching"]
+        "refs": [
+          "fao-infoods-2012-matching"
+        ]
       },
       {
         "id": "energy-check",
         "text": "Energy is recalculated with general conversion factors of 4 kcal/g for protein and available carbohydrate, 9 kcal/g for fat and 2 kcal/g for dietary fibre, approximating available carbohydrate as total carbohydrate by difference minus dietary fibre. A difference of more than 10 % from the reported energy is flagged for review. The 10 % tolerance is a screening heuristic set for this dataset, not a published limit.",
-        "refs": ["fao-2003-fnp77"]
+        "refs": [
+          "fao-2003-fnp77"
+        ]
       },
       {
         "id": "proximate-sum",
         "text": "Where water and ash are reported, the sum of water, protein, fat, total carbohydrate and ash is expected to lie between 97 and 103 g/100 g. When carbohydrate is calculated by difference the sum equals 100 g by construction, so this check mainly detects transcription errors and values combined from different samples.",
-        "refs": ["greenfield-southgate-2003", "fao-infoods-2012-checking"]
+        "refs": [
+          "greenfield-southgate-2003",
+          "fao-infoods-2012-checking"
+        ]
       }
     ]
   },
@@ -121,7 +128,11 @@
     {
       "id": "legacy-v0",
       "type": "internal",
-      "authors": [{ "literal": "andean-crops repository" }],
+      "authors": [
+        {
+          "literal": "andean-crops repository"
+        }
+      ],
       "year": null,
       "title": "Values carried over from version 0.1 of this repository, for which no primary source was documented",
       "record_check": "not-applicable"
@@ -129,7 +140,11 @@
     {
       "id": "usda-sr-legacy-2018",
       "type": "database",
-      "authors": [{ "literal": "U.S. Department of Agriculture, Agricultural Research Service" }],
+      "authors": [
+        {
+          "literal": "U.S. Department of Agriculture, Agricultural Research Service"
+        }
+      ],
       "year": 2018,
       "title": "USDA National Nutrient Database for Standard Reference, Legacy Release",
       "publisher": "Nutrient Data Laboratory, Beltsville Human Nutrition Research Center",
@@ -140,7 +155,11 @@
     {
       "id": "fao-2003-fnp77",
       "type": "report",
-      "authors": [{ "literal": "FAO" }],
+      "authors": [
+        {
+          "literal": "FAO"
+        }
+      ],
       "year": 2003,
       "title": "Food energy – methods of analysis and conversion factors. Report of a technical workshop, Rome, 3–6 December 2002",
       "container": "FAO Food and Nutrition Paper 77",
@@ -153,8 +172,14 @@
       "id": "greenfield-southgate-2003",
       "type": "book",
       "authors": [
-        { "family": "Greenfield", "given": "H." },
-        { "family": "Southgate", "given": "D.A.T." }
+        {
+          "family": "Greenfield",
+          "given": "H."
+        },
+        {
+          "family": "Southgate",
+          "given": "D.A.T."
+        }
       ],
       "year": 2003,
       "title": "Food composition data: production, management and use",
@@ -167,7 +192,11 @@
     {
       "id": "fao-infoods-2012-checking",
       "type": "guideline",
-      "authors": [{ "literal": "FAO/INFOODS" }],
+      "authors": [
+        {
+          "literal": "FAO/INFOODS"
+        }
+      ],
       "year": 2012,
       "title": "FAO/INFOODS guidelines for checking food composition data prior to the publication of a user table/database – Version 1.0",
       "publisher": "Food and Agriculture Organization of the United Nations",
@@ -178,7 +207,11 @@
     {
       "id": "fao-infoods-2012-matching",
       "type": "guideline",
-      "authors": [{ "literal": "FAO/INFOODS" }],
+      "authors": [
+        {
+          "literal": "FAO/INFOODS"
+        }
+      ],
       "year": 2012,
       "title": "FAO/INFOODS guidelines for food matching – Version 1.2",
       "publisher": "Food and Agriculture Organization of the United Nations",
@@ -190,9 +223,18 @@
       "id": "repo-carrasco-2003",
       "type": "article",
       "authors": [
-        { "family": "Repo-Carrasco", "given": "R." },
-        { "family": "Espinoza", "given": "C." },
-        { "family": "Jacobsen", "given": "S.-E." }
+        {
+          "family": "Repo-Carrasco",
+          "given": "R."
+        },
+        {
+          "family": "Espinoza",
+          "given": "C."
+        },
+        {
+          "family": "Jacobsen",
+          "given": "S.-E."
+        }
       ],
       "year": 2003,
       "title": "Nutritional value and use of the Andean crops quinoa (Chenopodium quinoa) and kañiwa (Chenopodium pallidicaule)",
@@ -200,16 +242,28 @@
       "volume": "19",
       "pages": "179–189",
       "doi": "10.1081/FRI-120018884",
-      "record_check": "secondary-reference"
+      "record_check": "crossref"
     },
     {
       "id": "repo-carrasco-valencia-2010",
       "type": "article",
       "authors": [
-        { "family": "Repo-Carrasco-Valencia", "given": "R." },
-        { "family": "Hellström", "given": "J.K." },
-        { "family": "Pihlava", "given": "J.-M." },
-        { "family": "Mattila", "given": "P.H." }
+        {
+          "family": "Repo-Carrasco-Valencia",
+          "given": "R."
+        },
+        {
+          "family": "Hellström",
+          "given": "J.K."
+        },
+        {
+          "family": "Pihlava",
+          "given": "J.-M."
+        },
+        {
+          "family": "Mattila",
+          "given": "P.H."
+        }
       ],
       "year": 2010,
       "title": "Flavonoids and other phenolic compounds in Andean indigenous grains: quinoa (Chenopodium quinoa), kañiwa (Chenopodium pallidicaule) and kiwicha (Amaranthus caudatus)",
@@ -218,31 +272,53 @@
       "issue": "1",
       "pages": "128–133",
       "doi": "10.1016/j.foodchem.2009.09.087",
-      "record_check": "indexed-record"
+      "record_check": "crossref"
     },
     {
       "id": "nowak-2016",
       "type": "article",
       "authors": [
-        { "family": "Nowak", "given": "V." },
-        { "family": "Du", "given": "J." },
-        { "family": "Charrondière", "given": "U.R." }
+        {
+          "family": "Nowak",
+          "given": "V."
+        },
+        {
+          "family": "Du",
+          "given": "J."
+        },
+        {
+          "family": "Charrondière",
+          "given": "U.R."
+        }
       ],
       "year": 2016,
       "title": "Assessment of the nutritional composition of quinoa (Chenopodium quinoa Willd.)",
       "container": "Food Chemistry",
       "volume": "193",
       "pages": "47–54",
-      "record_check": "indexed-record"
+      "record_check": "crossref",
+      "doi": "10.1016/j.foodchem.2015.02.111"
     },
     {
       "id": "he-2002",
       "type": "article",
       "authors": [
-        { "family": "He", "given": "H.-P." },
-        { "family": "Cai", "given": "Y." },
-        { "family": "Sun", "given": "M." },
-        { "family": "Corke", "given": "H." }
+        {
+          "family": "He",
+          "given": "H.-P."
+        },
+        {
+          "family": "Cai",
+          "given": "Y."
+        },
+        {
+          "family": "Sun",
+          "given": "M."
+        },
+        {
+          "family": "Corke",
+          "given": "H."
+        }
       ],
       "year": 2002,
       "title": "Extraction and purification of squalene from Amaranthus grain",
@@ -251,17 +327,32 @@
       "issue": "2",
       "pages": "368–372",
       "doi": "10.1021/jf010918p",
-      "record_check": "indexed-record"
+      "record_check": "crossref"
     },
     {
       "id": "carvajal-larenas-2016",
       "type": "article",
       "authors": [
-        { "family": "Carvajal-Larenas", "given": "F.E." },
-        { "family": "Linnemann", "given": "A.R." },
-        { "family": "Nout", "given": "M.J.R." },
-        { "family": "Koziol", "given": "M." },
-        { "family": "van Boekel", "given": "M.A.J.S." }
+        {
+          "family": "Carvajal-Larenas",
+          "given": "F.E."
+        },
+        {
+          "family": "Linnemann",
+          "given": "A.R."
+        },
+        {
+          "family": "Nout",
+          "given": "M.J.R."
+        },
+        {
+          "family": "Koziol",
+          "given": "M."
+        },
+        {
+          "family": "van Boekel",
+          "given": "M.A.J.S."
+        }
       ],
       "year": 2016,
       "title": "Lupinus mutabilis: composition, uses, toxicology, and debittering",
@@ -270,26 +361,37 @@
       "issue": "9",
       "pages": "1454–1487",
       "doi": "10.1080/10408398.2013.772089",
-      "record_check": "indexed-record"
+      "record_check": "crossref"
     },
     {
       "id": "gonzales-2012",
       "type": "article",
-      "authors": [{ "family": "Gonzales", "given": "G.F." }],
+      "authors": [
+        {
+          "family": "Gonzales",
+          "given": "G.F."
+        }
+      ],
       "year": 2012,
       "title": "Ethnobiology and ethnopharmacology of Lepidium meyenii (maca), a plant from the Peruvian highlands",
       "container": "Evidence-Based Complementary and Alternative Medicine",
       "volume": "2012",
       "pages": "193496",
       "doi": "10.1155/2012/193496",
-      "record_check": "indexed-record"
+      "record_check": "crossref"
     },
     {
       "id": "wang-zhu-2019",
       "type": "article",
       "authors": [
-        { "family": "Wang", "given": "S." },
-        { "family": "Zhu", "given": "F." }
+        {
+          "family": "Wang",
+          "given": "S."
+        },
+        {
+          "family": "Zhu",
+          "given": "F."
+        }
       ],
       "year": 2019,
       "title": "Chemical composition and health effects of maca (Lepidium meyenii)",
@@ -297,14 +399,20 @@
       "volume": "288",
       "pages": "422–443",
       "doi": "10.1016/j.foodchem.2019.02.071",
-      "record_check": "indexed-record"
+      "record_check": "crossref"
     },
     {
       "id": "pedreschi-2007",
       "type": "article",
       "authors": [
-        { "family": "Pedreschi", "given": "R." },
-        { "family": "Cisneros-Zevallos", "given": "L." }
+        {
+          "family": "Pedreschi",
+          "given": "R."
+        },
+        {
+          "family": "Cisneros-Zevallos",
+          "given": "L."
+        }
       ],
       "year": 2007,
       "title": "Phenolic profiles of Andean purple corn (Zea mays L.)",
@@ -313,15 +421,24 @@
       "issue": "3",
       "pages": "956–963",
       "doi": "10.1016/j.foodchem.2005.11.004",
-      "record_check": "indexed-record"
+      "record_check": "crossref"
     },
     {
       "id": "lao-2017",
       "type": "article",
       "authors": [
-        { "family": "Lao", "given": "F." },
-        { "family": "Sigurdson", "given": "G.T." },
-        { "family": "Giusti", "given": "M.M." }
+        {
+          "family": "Lao",
+          "given": "F."
+        },
+        {
+          "family": "Sigurdson",
+          "given": "G.T."
+        },
+        {
+          "family": "Giusti",
+          "given": "M.M."
+        }
       ],
       "year": 2017,
       "title": "Health benefits of purple corn (Zea mays L.) phenolic compounds",
@@ -330,17 +447,32 @@
       "issue": "2",
       "pages": "234–246",
       "doi": "10.1111/1541-4337.12249",
-      "record_check": "indexed-record"
+      "record_check": "crossref"
     },
     {
       "id": "ortega-2006",
       "type": "article",
       "authors": [
-        { "family": "Ortega", "given": "O.R." },
-        { "family": "Kliebenstein", "given": "D.J." },
-        { "family": "Arbizu", "given": "C." },
-        { "family": "Ortega", "given": "R." },
-        { "family": "Quirós", "given": "C.F." }
+        {
+          "family": "Ortega",
+          "given": "O.R."
+        },
+        {
+          "family": "Kliebenstein",
+          "given": "D.J."
+        },
+        {
+          "family": "Arbizu",
+          "given": "C."
+        },
+        {
+          "family": "Ortega",
+          "given": "R."
+        },
+        {
+          "family": "Quirós",
+          "given": "C.F."
+        }
       ],
       "year": 2006,
       "title": "Glucosinolate survey of cultivated and feral mashua (Tropaeolum tuberosum Ruíz & Pavón) in the Cuzco region of Peru",
@@ -349,18 +481,36 @@
       "issue": "3",
       "pages": "254–264",
       "doi": "10.1663/0013-0001(2006)60[254:GSOCAF]2.0.CO;2",
-      "record_check": "indexed-record"
+      "record_check": "crossref"
     },
     {
       "id": "campos-2006",
       "type": "article",
       "authors": [
-        { "family": "Campos", "given": "D." },
-        { "family": "Noratto", "given": "G." },
-        { "family": "Chirinos", "given": "R." },
-        { "family": "Arbizu", "given": "C." },
-        { "family": "Roca", "given": "W." },
-        { "family": "Cisneros-Zevallos", "given": "L." }
+        {
+          "family": "Campos",
+          "given": "D."
+        },
+        {
+          "family": "Noratto",
+          "given": "G."
+        },
+        {
+          "family": "Chirinos",
+          "given": "R."
+        },
+        {
+          "family": "Arbizu",
+          "given": "C."
+        },
+        {
+          "family": "Roca",
+          "given": "W."
+        },
+        {
+          "family": "Cisneros-Zevallos",
+          "given": "L."
+        }
       ],
       "year": 2006,
       "title": "Antioxidant capacity and secondary metabolites in four species of Andean tuber crops: native potato (Solanum sp.), mashua (Tropaeolum tuberosum Ruiz & Pavón), oca (Oxalis tuberosa Molina) and ulluco (Ullucus tuberosus Caldas)",
@@ -369,59 +519,130 @@
       "issue": "10",
       "pages": "1481–1488",
       "doi": "10.1002/jsfa.2529",
-      "record_check": "indexed-record"
+      "record_check": "crossref"
     }
   ],
   "crops": [
     {
       "id": "quinoa",
-      "names": { "common": "Quinoa", "alternative": ["quinua"] },
-      "taxon": { "genus": "Chenopodium", "species": "quinoa", "authority": "Willd.", "family": "Amaranthaceae" },
+      "names": {
+        "common": "Quinoa",
+        "alternative": [
+          "quinua"
+        ]
+      },
+      "taxon": {
+        "genus": "Chenopodium",
+        "species": "quinoa",
+        "authority": "Willd.",
+        "family": "Amaranthaceae"
+      },
       "crop_group": "pseudocereal",
       "edible_part": "seed",
-      "food": { "description": "Quinoa, uncooked", "condition": "dry" },
+      "food": {
+        "description": "Quinoa, uncooked",
+        "condition": "dry"
+      },
       "composition": {
         "source": "usda-sr-legacy-2018",
         "source_record": "FDC ID 168874 (SR Legacy NDB 20035), 'Quinoa, uncooked'",
         "match": "direct",
         "values": {
-          "energy": { "value": 368, "verification": "corroborated" },
-          "water": { "value": 13.28, "verification": "corroborated" },
-          "protein": { "value": 14.12, "verification": "corroborated" },
-          "fat": { "value": 6.07, "verification": "corroborated" },
-          "carbohydrate_total": { "value": 64.16, "verification": "corroborated" },
-          "fibre": { "value": 7.0, "verification": "corroborated" },
-          "ash": { "value": 2.38, "verification": "corroborated" },
-          "calcium": { "value": 47, "verification": "corroborated" },
-          "iron": { "value": 4.57, "verification": "corroborated" }
+          "energy": {
+            "value": 368,
+            "verification": "corroborated"
+          },
+          "water": {
+            "value": 13.28,
+            "verification": "corroborated",
+            "note": "Corroborated by scaling a per-cup (170 g) listing of the source record to 100 g."
+          },
+          "protein": {
+            "value": 14.12,
+            "verification": "corroborated"
+          },
+          "fat": {
+            "value": 6.07,
+            "verification": "corroborated"
+          },
+          "carbohydrate_total": {
+            "value": 64.16,
+            "verification": "corroborated"
+          },
+          "fibre": {
+            "value": 7.0,
+            "verification": "corroborated"
+          },
+          "ash": {
+            "value": 2.38,
+            "verification": "corroborated",
+            "note": "Corroborated by scaling a per-cup (170 g) listing of the source record to 100 g."
+          },
+          "calcium": {
+            "value": 47,
+            "verification": "corroborated"
+          },
+          "iron": {
+            "value": 4.57,
+            "verification": "corroborated"
+          }
         }
       },
       "notes": [
         {
           "kind": "bioactive",
           "text": "Flavonoids, chiefly quercetin and kaempferol glycosides; total flavonoids in the quinoa and kañiwa samples studied ranged from 36.2 to 144.3 mg/100 g.",
-          "refs": ["repo-carrasco-valencia-2010"],
+          "refs": [
+            "repo-carrasco-valencia-2010"
+          ],
           "checked": true
         },
         {
           "kind": "antinutrient",
           "text": "Bitter saponins are concentrated in the outer seed layers; grain is usually dehulled or polished and washed before use, and low-saponin ('sweet') cultivars are being developed.",
-          "refs": ["nowak-2016"],
+          "refs": [
+            "nowak-2016"
+          ],
           "checked": true
         },
         {
           "kind": "context",
           "text": "Seed oil with linoleic acid as the main fatty acid and a high tocopherol content (reported jointly for quinoa and kañiwa).",
-          "refs": ["repo-carrasco-2003"],
+          "refs": [
+            "repo-carrasco-2003"
+          ],
           "checked": true
         }
       ],
-      "flags": []
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/quinoa.webp",
+        "alt": "Close-up of white quinoa grains",
+        "width": 720,
+        "height": 482,
+        "credit": {
+          "title": "File:Quinoa closeup.jpg",
+          "author": "Pom²",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Quinoa_closeup.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
     },
     {
       "id": "kiwicha",
-      "names": { "common": "Kiwicha", "alternative": ["Andean amaranth"] },
-      "taxon": { "genus": "Amaranthus", "species": "caudatus", "authority": "L.", "family": "Amaranthaceae" },
+      "names": {
+        "common": "Kiwicha",
+        "alternative": [
+          "Andean amaranth"
+        ]
+      },
+      "taxon": {
+        "genus": "Amaranthus",
+        "species": "caudatus",
+        "authority": "L.",
+        "family": "Amaranthaceae"
+      },
       "crop_group": "pseudocereal",
       "edible_part": "seed",
       "food": {
@@ -434,26 +655,51 @@
         "source_record": "FDC ID 170682 (SR Legacy NDB 20001), 'Amaranth grain, uncooked'",
         "match": "proxy",
         "values": {
-          "energy": { "value": 371, "verification": "corroborated" },
-          "protein": { "value": 13.56, "verification": "corroborated" },
-          "fat": { "value": 7.02, "verification": "corroborated" },
-          "carbohydrate_total": { "value": 65.25, "verification": "corroborated" },
-          "fibre": { "value": 6.7, "verification": "corroborated" },
-          "calcium": { "value": 159, "verification": "corroborated" },
-          "iron": { "value": 7.61, "verification": "corroborated" }
+          "energy": {
+            "value": 371,
+            "verification": "corroborated"
+          },
+          "protein": {
+            "value": 13.56,
+            "verification": "corroborated"
+          },
+          "fat": {
+            "value": 7.02,
+            "verification": "corroborated"
+          },
+          "carbohydrate_total": {
+            "value": 65.25,
+            "verification": "corroborated"
+          },
+          "fibre": {
+            "value": 6.7,
+            "verification": "corroborated"
+          },
+          "calcium": {
+            "value": 159,
+            "verification": "corroborated"
+          },
+          "iron": {
+            "value": 7.61,
+            "verification": "corroborated"
+          }
         }
       },
       "notes": [
         {
           "kind": "bioactive",
           "text": "No quantifiable flavonoids were found in the kiwicha samples studied, in contrast to quinoa and kañiwa.",
-          "refs": ["repo-carrasco-valencia-2010"],
+          "refs": [
+            "repo-carrasco-valencia-2010"
+          ],
           "checked": true
         },
         {
           "kind": "bioactive",
           "text": "Amaranth seed oil contains squalene; one study reported 4.2 % squalene in crude Amaranthus oil.",
-          "refs": ["he-2002"],
+          "refs": [
+            "he-2002"
+          ],
           "checked": true
         }
       ],
@@ -462,12 +708,36 @@
           "code": "proxy-match",
           "text": "Composition values describe amaranth grain of unspecified species and are used as a proxy for Amaranthus caudatus."
         }
-      ]
+      ],
+      "image": {
+        "file": "assets/img/crops/kiwicha.webp",
+        "alt": "Kiwicha grains held in the palm of a hand",
+        "width": 720,
+        "height": 540,
+        "credit": {
+          "title": "File:Amaranthus kiwicha.jpg",
+          "author": "Crops for the Future",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Amaranthus_kiwicha.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
     },
     {
       "id": "canihua",
-      "names": { "common": "Cañihua", "alternative": ["kañiwa", "cañahua"] },
-      "taxon": { "genus": "Chenopodium", "species": "pallidicaule", "authority": "Aellen", "family": "Amaranthaceae" },
+      "names": {
+        "common": "Cañihua",
+        "alternative": [
+          "kañiwa",
+          "cañahua"
+        ]
+      },
+      "taxon": {
+        "genus": "Chenopodium",
+        "species": "pallidicaule",
+        "authority": "Aellen",
+        "family": "Amaranthaceae"
+      },
       "crop_group": "pseudocereal",
       "edible_part": "seed",
       "food": {
@@ -478,35 +748,84 @@
         "source": "legacy-v0",
         "match": "unknown",
         "values": {
-          "energy": { "value": 343, "verification": "unverified" },
-          "protein": { "value": 15.7, "verification": "unverified" },
-          "fat": { "value": 4.2, "verification": "unverified" },
-          "carbohydrate_total": { "value": 63.8, "verification": "unverified" },
-          "fibre": { "value": 9.8, "verification": "unverified" },
-          "calcium": { "value": 110, "verification": "unverified" },
-          "iron": { "value": 13.0, "verification": "unverified" }
+          "energy": {
+            "value": 343,
+            "verification": "unverified"
+          },
+          "protein": {
+            "value": 15.7,
+            "verification": "unverified"
+          },
+          "fat": {
+            "value": 4.2,
+            "verification": "unverified"
+          },
+          "carbohydrate_total": {
+            "value": 63.8,
+            "verification": "unverified"
+          },
+          "fibre": {
+            "value": 9.8,
+            "verification": "unverified"
+          },
+          "calcium": {
+            "value": 110,
+            "verification": "unverified"
+          },
+          "iron": {
+            "value": 13.0,
+            "verification": "unverified"
+          }
         }
       },
       "notes": [
         {
           "kind": "bioactive",
           "text": "Flavonoids, chiefly quercetin and isorhamnetin glycosides.",
-          "refs": ["repo-carrasco-valencia-2010"],
+          "refs": [
+            "repo-carrasco-valencia-2010"
+          ],
           "checked": true
         },
         {
           "kind": "context",
           "text": "Seed oil with linoleic acid as the main fatty acid and a high tocopherol content (reported jointly for quinoa and kañiwa).",
-          "refs": ["repo-carrasco-2003"],
+          "refs": [
+            "repo-carrasco-2003"
+          ],
           "checked": true
         }
       ],
-      "flags": []
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/canihua.webp",
+        "alt": "Cañihua plants in a field near Juliaca, Peru",
+        "width": 720,
+        "height": 540,
+        "credit": {
+          "title": "File:Canihua (Chenopodium pallidicaule) at Atuncolla near Sillustani Juliaca.jpg",
+          "author": "Crops for the Future",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Canihua_%28Chenopodium_pallidicaule%29_at_Atuncolla_near_Sillustani_Juliaca.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
     },
     {
       "id": "tarwi",
-      "names": { "common": "Tarwi", "alternative": ["chocho", "Andean lupin"] },
-      "taxon": { "genus": "Lupinus", "species": "mutabilis", "authority": "Sweet", "family": "Fabaceae" },
+      "names": {
+        "common": "Tarwi",
+        "alternative": [
+          "chocho",
+          "Andean lupin"
+        ]
+      },
+      "taxon": {
+        "genus": "Lupinus",
+        "species": "mutabilis",
+        "authority": "Sweet",
+        "family": "Fabaceae"
+      },
       "crop_group": "grain_legume",
       "edible_part": "seed",
       "food": {
@@ -518,26 +837,51 @@
         "source": "legacy-v0",
         "match": "unknown",
         "values": {
-          "energy": { "value": 411, "verification": "unverified" },
-          "protein": { "value": 44.3, "verification": "unverified" },
-          "fat": { "value": 16.5, "verification": "unverified" },
-          "carbohydrate_total": { "value": 28.2, "verification": "unverified" },
-          "fibre": { "value": 11.2, "verification": "unverified" },
-          "calcium": { "value": 93, "verification": "unverified" },
-          "iron": { "value": 5.3, "verification": "unverified" }
+          "energy": {
+            "value": 411,
+            "verification": "unverified"
+          },
+          "protein": {
+            "value": 44.3,
+            "verification": "unverified"
+          },
+          "fat": {
+            "value": 16.5,
+            "verification": "unverified"
+          },
+          "carbohydrate_total": {
+            "value": 28.2,
+            "verification": "unverified"
+          },
+          "fibre": {
+            "value": 11.2,
+            "verification": "unverified"
+          },
+          "calcium": {
+            "value": 93,
+            "verification": "unverified"
+          },
+          "iron": {
+            "value": 5.3,
+            "verification": "unverified"
+          }
         }
       },
       "notes": [
         {
           "kind": "antinutrient",
           "text": "Raw seeds contain bitter, toxic quinolizidine alkaloids (mainly lupanine, with sparteine and hydroxylupanines) and are debittered before consumption, traditionally by soaking, cooking and repeated washing in water.",
-          "refs": ["carvajal-larenas-2016"],
+          "refs": [
+            "carvajal-larenas-2016"
+          ],
           "checked": false
         },
         {
           "kind": "context",
           "text": "Lipid fraction dominated by oleic acid (monounsaturated) and linoleic acid (polyunsaturated).",
-          "refs": ["carvajal-larenas-2016"],
+          "refs": [
+            "carvajal-larenas-2016"
+          ],
           "checked": false
         }
       ],
@@ -546,11 +890,26 @@
           "code": "not-eaten-raw",
           "text": "The raw seed is not eaten; values do not describe the debittered food as consumed."
         }
-      ]
+      ],
+      "image": {
+        "file": "assets/img/crops/tarwi.webp",
+        "alt": "Tarwi seeds (Lupinus mutabilis)",
+        "width": 720,
+        "height": 480,
+        "credit": {
+          "title": "File:Lupinus mutabilis seeds.jpg",
+          "author": "Tracey Slotta @ USDA-NRCS PLANTS Database",
+          "licence": "Public domain",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Lupinus_mutabilis_seeds.jpg"
+        }
+      }
     },
     {
       "id": "maca",
-      "names": { "common": "Maca", "alternative": [] },
+      "names": {
+        "common": "Maca",
+        "alternative": []
+      },
       "taxon": {
         "genus": "Lepidium",
         "species": "meyenii",
@@ -568,38 +927,67 @@
         "source": "legacy-v0",
         "match": "unknown",
         "values": {
-          "energy": { "value": 325, "verification": "unverified" },
-          "protein": { "value": 10.2, "verification": "unverified" },
-          "fat": { "value": 0.9, "verification": "unverified" },
-          "carbohydrate_total": { "value": 71.4, "verification": "unverified" },
-          "fibre": { "value": 8.5, "verification": "unverified" },
-          "calcium": { "value": 250, "verification": "unverified" },
-          "iron": { "value": 14.8, "verification": "unverified" }
+          "energy": {
+            "value": 325,
+            "verification": "unverified"
+          },
+          "protein": {
+            "value": 10.2,
+            "verification": "unverified"
+          },
+          "fat": {
+            "value": 0.9,
+            "verification": "unverified"
+          },
+          "carbohydrate_total": {
+            "value": 71.4,
+            "verification": "unverified"
+          },
+          "fibre": {
+            "value": 8.5,
+            "verification": "unverified"
+          },
+          "calcium": {
+            "value": 250,
+            "verification": "unverified"
+          },
+          "iron": {
+            "value": 14.8,
+            "verification": "unverified"
+          }
         }
       },
       "notes": [
         {
           "kind": "context",
           "text": "Cultivated in the central Andes of Peru at about 4000–4500 m altitude.",
-          "refs": ["gonzales-2012"],
+          "refs": [
+            "gonzales-2012"
+          ],
           "checked": true
         },
         {
           "kind": "bioactive",
           "text": "Glucosinolates, predominantly benzyl glucosinolate (glucotropaeolin).",
-          "refs": ["wang-zhu-2019"],
+          "refs": [
+            "wang-zhu-2019"
+          ],
           "checked": false
         },
         {
           "kind": "bioactive",
           "text": "Macamides (N-benzylalkamides) and macaenes; macamides are reported to form mainly during post-harvest drying.",
-          "refs": ["wang-zhu-2019"],
+          "refs": [
+            "wang-zhu-2019"
+          ],
           "checked": false
         },
         {
           "kind": "context",
           "text": "Clinical evidence for the health effects attributed to maca is limited.",
-          "refs": ["wang-zhu-2019"],
+          "refs": [
+            "wang-zhu-2019"
+          ],
           "checked": true
         }
       ],
@@ -608,11 +996,29 @@
           "code": "composite-suspected",
           "text": "Energy, carbohydrate, calcium and iron coincide with values declared on at least one commercial maca-powder label (rounded label declarations, not analytical data). The origin of the other values is unknown, so the record may combine values from different products or samples."
         }
-      ]
+      ],
+      "image": {
+        "file": "assets/img/crops/maca.webp",
+        "alt": "Maca hypocotyls with leaves",
+        "width": 720,
+        "height": 540,
+        "credit": {
+          "title": "File:Lepidium meyenii, Tsaghkadzor, in culture1.jpg",
+          "author": "Vahe Martirosyan",
+          "licence": "CC BY 2.5",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Lepidium_meyenii%2C_Tsaghkadzor%2C_in_culture1.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by/2.5/"
+        }
+      }
     },
     {
       "id": "purple-corn",
-      "names": { "common": "Purple corn", "alternative": ["maíz morado"] },
+      "names": {
+        "common": "Purple corn",
+        "alternative": [
+          "maíz morado"
+        ]
+      },
       "taxon": {
         "genus": "Zea",
         "species": "mays",
@@ -630,35 +1036,83 @@
         "source": "legacy-v0",
         "match": "unknown",
         "values": {
-          "energy": { "value": 356, "verification": "unverified" },
-          "protein": { "value": 8.5, "verification": "unverified" },
-          "fat": { "value": 4.3, "verification": "unverified" },
-          "carbohydrate_total": { "value": 74.2, "verification": "unverified" },
-          "fibre": { "value": 7.3, "verification": "unverified" },
-          "calcium": { "value": 18, "verification": "unverified" },
-          "iron": { "value": 2.1, "verification": "unverified" }
+          "energy": {
+            "value": 356,
+            "verification": "unverified"
+          },
+          "protein": {
+            "value": 8.5,
+            "verification": "unverified"
+          },
+          "fat": {
+            "value": 4.3,
+            "verification": "unverified"
+          },
+          "carbohydrate_total": {
+            "value": 74.2,
+            "verification": "unverified"
+          },
+          "fibre": {
+            "value": 7.3,
+            "verification": "unverified"
+          },
+          "calcium": {
+            "value": 18,
+            "verification": "unverified"
+          },
+          "iron": {
+            "value": 2.1,
+            "verification": "unverified"
+          }
         }
       },
       "notes": [
         {
           "kind": "bioactive",
           "text": "Anthocyanins (cyanidin-3-glucoside, pelargonidin-3-glucoside and peonidin-3-glucoside, with acylated forms), together with p-coumaric and ferulic acids and quercetin derivatives.",
-          "refs": ["pedreschi-2007"],
+          "refs": [
+            "pedreschi-2007"
+          ],
           "checked": true
         },
         {
           "kind": "context",
           "text": "Reported health effects of purple-corn phenolics come mainly from cell and animal studies; evidence from human studies is limited.",
-          "refs": ["lao-2017"],
+          "refs": [
+            "lao-2017"
+          ],
           "checked": true
         }
       ],
-      "flags": []
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/purple-corn.webp",
+        "alt": "Purple maize cob (maíz morado), museum specimen",
+        "width": 720,
+        "height": 448,
+        "credit": {
+          "title": "File:Zea mays 'morado' MHNT.BOT.2015.34.11.jpg",
+          "author": "Roger Culos",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Zea_mays_%27morado%27_MHNT.BOT.2015.34.11.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
     },
     {
       "id": "mashua",
-      "names": { "common": "Mashua", "alternative": ["isaño"] },
-      "taxon": { "genus": "Tropaeolum", "species": "tuberosum", "authority": "Ruiz & Pav.", "family": "Tropaeolaceae" },
+      "names": {
+        "common": "Mashua",
+        "alternative": [
+          "isaño"
+        ]
+      },
+      "taxon": {
+        "genus": "Tropaeolum",
+        "species": "tuberosum",
+        "authority": "Ruiz & Pav.",
+        "family": "Tropaeolaceae"
+      },
       "crop_group": "root_tuber",
       "edible_part": "tuber",
       "food": {
@@ -669,35 +1123,83 @@
         "source": "legacy-v0",
         "match": "unknown",
         "values": {
-          "energy": { "value": 52, "verification": "unverified" },
-          "protein": { "value": 1.5, "verification": "unverified" },
-          "fat": { "value": 0.2, "verification": "unverified" },
-          "carbohydrate_total": { "value": 11.3, "verification": "unverified" },
-          "fibre": { "value": 1.8, "verification": "unverified" },
-          "calcium": { "value": 12, "verification": "unverified" },
-          "iron": { "value": 1.2, "verification": "unverified" }
+          "energy": {
+            "value": 52,
+            "verification": "unverified"
+          },
+          "protein": {
+            "value": 1.5,
+            "verification": "unverified"
+          },
+          "fat": {
+            "value": 0.2,
+            "verification": "unverified"
+          },
+          "carbohydrate_total": {
+            "value": 11.3,
+            "verification": "unverified"
+          },
+          "fibre": {
+            "value": 1.8,
+            "verification": "unverified"
+          },
+          "calcium": {
+            "value": 12,
+            "verification": "unverified"
+          },
+          "iron": {
+            "value": 1.2,
+            "verification": "unverified"
+          }
         }
       },
       "notes": [
         {
           "kind": "bioactive",
           "text": "Three aromatic glucosinolates identified; total contents ranged from 0.27 to 50.74 µmol/g dried tuber and were highest in feral plants.",
-          "refs": ["ortega-2006"],
+          "refs": [
+            "ortega-2006"
+          ],
           "checked": true
         },
         {
           "kind": "bioactive",
           "text": "Highest antioxidant capacity and phenolic, anthocyanin and carotenoid contents of the four Andean tuber crops compared (native potato, mashua, oca and ulluco).",
-          "refs": ["campos-2006"],
+          "refs": [
+            "campos-2006"
+          ],
           "checked": true
         }
       ],
-      "flags": []
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/mashua.webp",
+        "alt": "Mashua tubers of several colours from Peru",
+        "width": 720,
+        "height": 1068,
+        "credit": {
+          "title": "File:Mashua tuber diversity Peru (Tropaeolum tuberosum).JPG",
+          "author": "Michael Hermann",
+          "licence": "CC BY-SA 4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Mashua_tuber_diversity_Peru_%28Tropaeolum_tuberosum%29.JPG",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        }
+      }
     },
     {
       "id": "oca",
-      "names": { "common": "Oca", "alternative": ["New Zealand yam"] },
-      "taxon": { "genus": "Oxalis", "species": "tuberosa", "authority": "Molina", "family": "Oxalidaceae" },
+      "names": {
+        "common": "Oca",
+        "alternative": [
+          "New Zealand yam"
+        ]
+      },
+      "taxon": {
+        "genus": "Oxalis",
+        "species": "tuberosa",
+        "authority": "Molina",
+        "family": "Oxalidaceae"
+      },
       "crop_group": "root_tuber",
       "edible_part": "tuber",
       "food": {
@@ -708,13 +1210,34 @@
         "source": "legacy-v0",
         "match": "unknown",
         "values": {
-          "energy": { "value": 61, "verification": "unverified" },
-          "protein": { "value": 1.1, "verification": "unverified" },
-          "fat": { "value": 0.6, "verification": "unverified" },
-          "carbohydrate_total": { "value": 13.3, "verification": "unverified" },
-          "fibre": { "value": 1.4, "verification": "unverified" },
-          "calcium": { "value": 19, "verification": "unverified" },
-          "iron": { "value": 1.6, "verification": "unverified" }
+          "energy": {
+            "value": 61,
+            "verification": "unverified"
+          },
+          "protein": {
+            "value": 1.1,
+            "verification": "unverified"
+          },
+          "fat": {
+            "value": 0.6,
+            "verification": "unverified"
+          },
+          "carbohydrate_total": {
+            "value": 13.3,
+            "verification": "unverified"
+          },
+          "fibre": {
+            "value": 1.4,
+            "verification": "unverified"
+          },
+          "calcium": {
+            "value": 19,
+            "verification": "unverified"
+          },
+          "iron": {
+            "value": 1.6,
+            "verification": "unverified"
+          }
         }
       },
       "notes": [
@@ -727,11 +1250,1165 @@
         {
           "kind": "bioactive",
           "text": "Analysed for antioxidant capacity, phenolics, anthocyanins and carotenoids alongside native potato, mashua and ulluco; mashua had the highest values.",
-          "refs": ["campos-2006"],
+          "refs": [
+            "campos-2006"
+          ],
           "checked": true
         }
       ],
-      "flags": []
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/oca.webp",
+        "alt": "Red oca tubers",
+        "width": 720,
+        "height": 677,
+        "credit": {
+          "title": "File:Oca du Pérou 01.jpg",
+          "author": "Tux-Man",
+          "licence": "CC0 1.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Oca_du_P%C3%A9rou_01.jpg",
+          "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+        }
+      }
+    },
+    {
+      "id": "potato",
+      "names": {
+        "common": "Potato",
+        "alternative": [
+          "papa"
+        ]
+      },
+      "taxon": {
+        "genus": "Solanum",
+        "species": "tuberosum",
+        "authority": "L.",
+        "family": "Solanaceae"
+      },
+      "crop_group": "root_tuber",
+      "edible_part": "tuber",
+      "food": {
+        "description": "Potatoes, flesh and skin, raw",
+        "condition": "fresh",
+        "note": "Cultivar not specified by the source; native Andean landraces may differ."
+      },
+      "composition": {
+        "source": "usda-sr-legacy-2018",
+        "source_record": "FDC ID 170026, 'Potatoes, flesh and skin, raw'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 77,
+            "verification": "corroborated"
+          },
+          "water": {
+            "value": 79.25,
+            "verification": "corroborated"
+          },
+          "protein": {
+            "value": 2.05,
+            "verification": "corroborated"
+          },
+          "fat": {
+            "value": 0.09,
+            "verification": "corroborated"
+          },
+          "carbohydrate_total": {
+            "value": 17.49,
+            "verification": "corroborated"
+          },
+          "fibre": {
+            "value": 2.1,
+            "verification": "corroborated"
+          },
+          "iron": {
+            "value": 0.81,
+            "verification": "corroborated"
+          }
+        }
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/potato.webp",
+        "alt": "Native Andean potatoes of several shapes and colours",
+        "width": 720,
+        "height": 434,
+        "credit": {
+          "title": "File:Papas Nativas.jpg",
+          "author": "Davidsuna",
+          "licence": "CC BY-SA 4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Papas_Nativas.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        }
+      }
+    },
+    {
+      "id": "ulluco",
+      "names": {
+        "common": "Ulluco",
+        "alternative": [
+          "olluco",
+          "melloco"
+        ]
+      },
+      "taxon": {
+        "genus": "Ullucus",
+        "species": "tuberosus",
+        "authority": "Caldas",
+        "family": "Basellaceae"
+      },
+      "crop_group": "root_tuber",
+      "edible_part": "tuber",
+      "food": {
+        "description": "Tuber, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/ulluco.webp",
+        "alt": "Ulluco tubers from southern Peru",
+        "width": 720,
+        "height": 478,
+        "credit": {
+          "title": "File:Ullucus tuberosus (South Peru).jpg",
+          "author": "Eric Hunt",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Ullucus_tuberosus_%28South_Peru%29.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
+    },
+    {
+      "id": "yacon",
+      "names": {
+        "common": "Yacón",
+        "alternative": [
+          "yacon"
+        ]
+      },
+      "taxon": {
+        "genus": "Smallanthus",
+        "species": "sonchifolius",
+        "authority": "(Poepp.) H.Rob.",
+        "family": "Asteraceae"
+      },
+      "crop_group": "root_tuber",
+      "edible_part": "root",
+      "food": {
+        "description": "Storage root, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/yacon.webp",
+        "alt": "Whole and halved yacón storage roots",
+        "width": 720,
+        "height": 484,
+        "credit": {
+          "title": "File:Yacon roots (Smallanthus sonchifolius).JPG",
+          "author": "NusHub",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Yacon_roots_%28Smallanthus_sonchifolius%29.JPG",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
+    },
+    {
+      "id": "arracacha",
+      "names": {
+        "common": "Arracacha",
+        "alternative": [
+          "racacha",
+          "Peruvian parsnip"
+        ]
+      },
+      "taxon": {
+        "genus": "Arracacia",
+        "species": "xanthorrhiza",
+        "authority": "Bancr.",
+        "family": "Apiaceae"
+      },
+      "crop_group": "root_tuber",
+      "edible_part": "root",
+      "food": {
+        "description": "Storage root, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/arracacha.webp",
+        "alt": "Arracacha roots in a supermarket crate",
+        "width": 720,
+        "height": 406,
+        "credit": {
+          "title": "File:Arracacia xanthorrhiza supermarket.jpg",
+          "author": "Germarquezm",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Arracacia_xanthorrhiza_supermarket.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
+    },
+    {
+      "id": "achira",
+      "names": {
+        "common": "Achira",
+        "alternative": [
+          "Queensland arrowroot"
+        ]
+      },
+      "taxon": {
+        "genus": "Canna",
+        "species": "indica",
+        "authority": "L.",
+        "family": "Cannaceae",
+        "note": "Edible achira is often listed as Canna edulis."
+      },
+      "crop_group": "root_tuber",
+      "edible_part": "rhizome",
+      "food": {
+        "description": "Rhizome, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/achira.webp",
+        "alt": "Achira plant (Canna edulis) leaves",
+        "width": 720,
+        "height": 584,
+        "credit": {
+          "title": "File:Canna Edulis 2003072001 0014.jpg",
+          "author": "Giantsshoulders (English Wikipedia)",
+          "licence": "Public domain",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Canna_Edulis_2003072001_0014.jpg"
+        }
+      }
+    },
+    {
+      "id": "chuno",
+      "names": {
+        "common": "Chuño",
+        "alternative": [
+          "tunta"
+        ]
+      },
+      "taxon": {
+        "genus": "Solanum",
+        "species": "tuberosum",
+        "authority": "L.",
+        "family": "Solanaceae",
+        "note": "Traditional freeze-dried potato; also made from other cultivated potato species."
+      },
+      "crop_group": "root_tuber",
+      "edible_part": "tuber",
+      "food": {
+        "description": "Freeze-dried potato tuber",
+        "condition": "dried"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/chuno.webp",
+        "alt": "Black chuño (freeze-dried potatoes) in a sack",
+        "width": 720,
+        "height": 481,
+        "credit": {
+          "title": "File:Chuño.jpg",
+          "author": "Eric in SF",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Chu%C3%B1o.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
+    },
+    {
+      "id": "lima-bean",
+      "names": {
+        "common": "Lima bean",
+        "alternative": [
+          "pallar"
+        ]
+      },
+      "taxon": {
+        "genus": "Phaseolus",
+        "species": "lunatus",
+        "authority": "L.",
+        "family": "Fabaceae"
+      },
+      "crop_group": "grain_legume",
+      "edible_part": "seed",
+      "food": {
+        "description": "Lima beans, large, mature seeds, raw",
+        "condition": "dry"
+      },
+      "composition": {
+        "source": "usda-sr-legacy-2018",
+        "source_record": "FDC ID 174252 (SR Legacy NDB 16071), 'Lima beans, large, mature seeds, raw'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 338,
+            "verification": "corroborated"
+          },
+          "protein": {
+            "value": 21.46,
+            "verification": "corroborated"
+          },
+          "fat": {
+            "value": 0.69,
+            "verification": "corroborated"
+          },
+          "carbohydrate_total": {
+            "value": 63.38,
+            "verification": "corroborated"
+          },
+          "fibre": {
+            "value": 19.0,
+            "verification": "corroborated"
+          },
+          "ash": {
+            "value": 4.3,
+            "verification": "corroborated"
+          },
+          "calcium": {
+            "value": 81,
+            "verification": "corroborated"
+          }
+        }
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/lima-bean.webp",
+        "alt": "Large pale lima beans",
+        "width": 720,
+        "height": 470,
+        "credit": {
+          "title": "File:Phaseoulus lunatus.jpg",
+          "author": "Howard F. Schwartz, Colorado State University, Bugwood.org",
+          "licence": "CC BY 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Phaseoulus_lunatus.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by/3.0/"
+        }
+      }
+    },
+    {
+      "id": "common-bean",
+      "names": {
+        "common": "Common bean",
+        "alternative": [
+          "frijol",
+          "poroto"
+        ]
+      },
+      "taxon": {
+        "genus": "Phaseolus",
+        "species": "vulgaris",
+        "authority": "L.",
+        "family": "Fabaceae"
+      },
+      "crop_group": "grain_legume",
+      "edible_part": "seed",
+      "food": {
+        "description": "Beans, cranberry (roman), mature seeds, raw",
+        "condition": "dry",
+        "note": "Values describe the cranberry market class; Andean bean landraces may differ."
+      },
+      "composition": {
+        "source": "usda-sr-legacy-2018",
+        "source_record": "FDC ID 175189, 'Beans, cranberry (roman), mature seeds, raw'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 335,
+            "verification": "corroborated"
+          },
+          "protein": {
+            "value": 23.0,
+            "verification": "corroborated"
+          },
+          "fat": {
+            "value": 1.2,
+            "verification": "corroborated"
+          },
+          "carbohydrate_total": {
+            "value": 60.05,
+            "verification": "corroborated"
+          },
+          "fibre": {
+            "value": 24.7,
+            "verification": "corroborated"
+          },
+          "calcium": {
+            "value": 127,
+            "verification": "corroborated"
+          }
+        }
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/common-bean.webp",
+        "alt": "Speckled red common beans",
+        "width": 720,
+        "height": 480,
+        "credit": {
+          "title": "File:Red Speckled Kidney Beans.jpg",
+          "author": "Sanjay Acharya",
+          "licence": "CC BY-SA 4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Red_Speckled_Kidney_Beans.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        }
+      }
+    },
+    {
+      "id": "peanut",
+      "names": {
+        "common": "Peanut",
+        "alternative": [
+          "maní"
+        ]
+      },
+      "taxon": {
+        "genus": "Arachis",
+        "species": "hypogaea",
+        "authority": "L.",
+        "family": "Fabaceae"
+      },
+      "crop_group": "grain_legume",
+      "edible_part": "seed",
+      "food": {
+        "description": "Peanuts, all types, raw",
+        "condition": "dry"
+      },
+      "composition": {
+        "source": "usda-sr-legacy-2018",
+        "source_record": "FDC ID 172430 (SR Legacy NDB 16087), 'Peanuts, all types, raw'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 567,
+            "verification": "corroborated"
+          },
+          "water": {
+            "value": 6.5,
+            "verification": "corroborated"
+          },
+          "protein": {
+            "value": 25.8,
+            "verification": "corroborated"
+          },
+          "fat": {
+            "value": 49.24,
+            "verification": "corroborated"
+          },
+          "carbohydrate_total": {
+            "value": 16.13,
+            "verification": "corroborated"
+          },
+          "fibre": {
+            "value": 8.5,
+            "verification": "corroborated"
+          },
+          "ash": {
+            "value": 2.33,
+            "verification": "corroborated"
+          },
+          "calcium": {
+            "value": 92,
+            "verification": "corroborated"
+          },
+          "iron": {
+            "value": 4.58,
+            "verification": "corroborated"
+          }
+        }
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/peanut.webp",
+        "alt": "Raw peanuts with skins on a white plate",
+        "width": 720,
+        "height": 539,
+        "credit": {
+          "title": "File:Raw peanuts with skin on white plate.jpg",
+          "author": "Undeka 11",
+          "licence": "CC BY-SA 4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Raw_peanuts_with_skin_on_white_plate.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        }
+      }
+    },
+    {
+      "id": "cape-gooseberry",
+      "names": {
+        "common": "Cape gooseberry",
+        "alternative": [
+          "aguaymanto",
+          "uchuva",
+          "goldenberry"
+        ]
+      },
+      "taxon": {
+        "genus": "Physalis",
+        "species": "peruviana",
+        "authority": "L.",
+        "family": "Solanaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Groundcherries (cape-gooseberries or poha), raw",
+        "condition": "fresh"
+      },
+      "composition": {
+        "source": "usda-sr-legacy-2018",
+        "source_record": "SR Legacy NDB 09138, 'Groundcherries, (cape-gooseberries or poha), raw'",
+        "match": "proxy",
+        "values": {
+          "energy": {
+            "value": 53,
+            "verification": "corroborated"
+          },
+          "water": {
+            "value": 85.4,
+            "verification": "corroborated"
+          },
+          "protein": {
+            "value": 1.9,
+            "verification": "corroborated"
+          },
+          "fat": {
+            "value": 0.7,
+            "verification": "corroborated"
+          },
+          "carbohydrate_total": {
+            "value": 11.2,
+            "verification": "corroborated"
+          },
+          "calcium": {
+            "value": 9,
+            "verification": "corroborated"
+          },
+          "iron": {
+            "value": 1.0,
+            "verification": "corroborated"
+          }
+        }
+      },
+      "notes": [],
+      "flags": [
+        {
+          "code": "proxy-match",
+          "text": "The source record covers groundcherries, cape gooseberries and poha without naming a species; it is used as a proxy for Physalis peruviana."
+        }
+      ],
+      "image": {
+        "file": "assets/img/crops/cape-gooseberry.webp",
+        "alt": "Cape gooseberry fruit in its open papery husk",
+        "width": 720,
+        "height": 576,
+        "credit": {
+          "title": "File:Physalis peruviana calix open close-up.jpg",
+          "author": "Ivar Leidus",
+          "licence": "CC BY-SA 4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Physalis_peruviana_calix_open_close-up.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        }
+      }
+    },
+    {
+      "id": "cherimoya",
+      "names": {
+        "common": "Cherimoya",
+        "alternative": [
+          "chirimoya"
+        ]
+      },
+      "taxon": {
+        "genus": "Annona",
+        "species": "cherimola",
+        "authority": "Mill.",
+        "family": "Annonaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Cherimoya, raw",
+        "condition": "fresh",
+        "note": "Fat is omitted because secondary copies of the source record disagree."
+      },
+      "composition": {
+        "source": "usda-sr-legacy-2018",
+        "source_record": "SR Legacy NDB 09062, 'Cherimoya, raw'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 75,
+            "verification": "corroborated"
+          },
+          "water": {
+            "value": 79.4,
+            "verification": "corroborated"
+          },
+          "protein": {
+            "value": 1.6,
+            "verification": "corroborated"
+          },
+          "carbohydrate_total": {
+            "value": 17.7,
+            "verification": "corroborated"
+          },
+          "fibre": {
+            "value": 3.0,
+            "verification": "corroborated"
+          },
+          "ash": {
+            "value": 0.65,
+            "verification": "corroborated",
+            "note": "Corroborated by scaling a per-serving (160 g) listing of the source record to 100 g."
+          },
+          "calcium": {
+            "value": 10,
+            "verification": "corroborated",
+            "note": "Corroborated by scaling a per-serving (160 g) listing of the source record to 100 g."
+          },
+          "iron": {
+            "value": 0.27,
+            "verification": "corroborated"
+          }
+        }
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/cherimoya.webp",
+        "alt": "Cherimoya fruit on the tree",
+        "width": 720,
+        "height": 540,
+        "credit": {
+          "title": "File:Annona cherimola fruit, Pedra Bela, Brazil.jpg",
+          "author": "Marcelo RosaMelo",
+          "licence": "CC0 1.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Annona_cherimola_fruit%2C_Pedra_Bela%2C_Brazil.jpg",
+          "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+        }
+      }
+    },
+    {
+      "id": "lucuma",
+      "names": {
+        "common": "Lúcuma",
+        "alternative": [
+          "lucuma"
+        ]
+      },
+      "taxon": {
+        "genus": "Pouteria",
+        "species": "lucuma",
+        "authority": "(Ruiz & Pav.) Kuntze",
+        "family": "Sapotaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit pulp, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/lucuma.webp",
+        "alt": "Two ripe lúcuma fruits",
+        "width": 720,
+        "height": 540,
+        "credit": {
+          "title": "File:Lucuma 1.JPG",
+          "author": "Dtarazona",
+          "licence": "Public domain",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Lucuma_1.JPG"
+        }
+      }
+    },
+    {
+      "id": "tree-tomato",
+      "names": {
+        "common": "Tree tomato",
+        "alternative": [
+          "tamarillo",
+          "sachatomate",
+          "tomate de árbol"
+        ]
+      },
+      "taxon": {
+        "genus": "Solanum",
+        "species": "betaceum",
+        "authority": "Cav.",
+        "family": "Solanaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/tree-tomato.webp",
+        "alt": "Orange tree tomatoes hanging on the plant",
+        "width": 720,
+        "height": 720,
+        "credit": {
+          "title": "File:Solanum betaceum-IMG 0242.jpg",
+          "author": "C T Johansson",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Solanum_betaceum-IMG_0242.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
+    },
+    {
+      "id": "pepino-dulce",
+      "names": {
+        "common": "Pepino dulce",
+        "alternative": [
+          "pepino",
+          "sweet pepino"
+        ]
+      },
+      "taxon": {
+        "genus": "Solanum",
+        "species": "muricatum",
+        "authority": "Aiton",
+        "family": "Solanaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/pepino-dulce.webp",
+        "alt": "Pepino dulce fruits with purple stripes",
+        "width": 720,
+        "height": 540,
+        "credit": {
+          "title": "File:Starr-140402-0157-Solanum muricatum-fruit-Hawea Pl Olinda-Maui (24610929944).jpg",
+          "author": "Forest and Kim Starr",
+          "licence": "CC BY 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Starr-140402-0157-Solanum_muricatum-fruit-Hawea_Pl_Olinda-Maui_%2824610929944%29.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by/3.0/"
+        }
+      }
+    },
+    {
+      "id": "granadilla",
+      "names": {
+        "common": "Sweet granadilla",
+        "alternative": [
+          "granadilla"
+        ]
+      },
+      "taxon": {
+        "genus": "Passiflora",
+        "species": "ligularis",
+        "authority": "Juss.",
+        "family": "Passifloraceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit pulp with seeds, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/granadilla.webp",
+        "alt": "Sweet granadilla, whole and cut open to show the seeds in their pulp",
+        "width": 720,
+        "height": 480,
+        "credit": {
+          "title": "File:Sweet granadillas (Passiflora ligularis) - whole and cross section.jpg",
+          "author": "Ivar Leidus",
+          "licence": "CC BY-SA 4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sweet_granadillas_%28Passiflora_ligularis%29_-_whole_and_cross_section.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        }
+      }
+    },
+    {
+      "id": "tumbo",
+      "names": {
+        "common": "Banana passionfruit",
+        "alternative": [
+          "tumbo",
+          "curuba"
+        ]
+      },
+      "taxon": {
+        "genus": "Passiflora",
+        "species": "tripartita",
+        "authority": "(Kunth) Holm-Niels. & P.Jørg.",
+        "family": "Passifloraceae",
+        "infraspecific": "var. mollissima"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit pulp, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/tumbo.webp",
+        "alt": "Banana passionfruit (curuba) cut lengthwise",
+        "width": 720,
+        "height": 650,
+        "credit": {
+          "title": "File:Curuba.jpg",
+          "author": "Fibonacci",
+          "licence": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Curuba.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
+    },
+    {
+      "id": "naranjilla",
+      "names": {
+        "common": "Naranjilla",
+        "alternative": [
+          "lulo"
+        ]
+      },
+      "taxon": {
+        "genus": "Solanum",
+        "species": "quitoense",
+        "authority": "Lam.",
+        "family": "Solanaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Naranjilla (lulo) pulp, frozen, unsweetened",
+        "condition": "fresh",
+        "note": "Fibre is omitted because secondary copies of the source record disagree."
+      },
+      "composition": {
+        "source": "usda-sr-legacy-2018",
+        "source_record": "FDC ID 167790, 'Naranjilla (lulo) pulp, frozen, unsweetened'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 25,
+            "verification": "corroborated"
+          },
+          "water": {
+            "value": 93.05,
+            "verification": "corroborated"
+          },
+          "protein": {
+            "value": 0.44,
+            "verification": "corroborated"
+          },
+          "fat": {
+            "value": 0.22,
+            "verification": "corroborated"
+          },
+          "carbohydrate_total": {
+            "value": 5.9,
+            "verification": "corroborated"
+          },
+          "ash": {
+            "value": 0.39,
+            "verification": "corroborated"
+          }
+        }
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/naranjilla.webp",
+        "alt": "Hairy naranjilla fruits on the plant",
+        "width": 720,
+        "height": 480,
+        "credit": {
+          "title": "File:Solanum quitoense 13zz.jpg",
+          "author": "David J. Stang",
+          "licence": "CC BY-SA 4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Solanum_quitoense_13zz.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        }
+      }
+    },
+    {
+      "id": "pacay",
+      "names": {
+        "common": "Pacay",
+        "alternative": [
+          "pacae",
+          "ice-cream bean"
+        ]
+      },
+      "taxon": {
+        "genus": "Inga",
+        "species": "feuillei",
+        "authority": "DC.",
+        "family": "Fabaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Sweet pulp around the seeds, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/pacay.webp",
+        "alt": "Long pacay pods hanging on the tree",
+        "width": 720,
+        "height": 960,
+        "credit": {
+          "title": "File:Starr 070328-6185 Inga feuillei.jpg",
+          "author": "Forest and Kim Starr",
+          "licence": "CC BY 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Starr_070328-6185_Inga_feuillei.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by/3.0/"
+        }
+      }
+    },
+    {
+      "id": "mora",
+      "names": {
+        "common": "Andean blackberry",
+        "alternative": [
+          "mora de Castilla"
+        ]
+      },
+      "taxon": {
+        "genus": "Rubus",
+        "species": "glaucus",
+        "authority": "Benth.",
+        "family": "Rosaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/mora.webp",
+        "alt": "Andean blackberries ripening beside a flower",
+        "width": 720,
+        "height": 480,
+        "credit": {
+          "title": "File:Starr 970603-0069 Rubus glaucus.jpg",
+          "author": "Forest and Kim Starr",
+          "licence": "CC BY 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Starr_970603-0069_Rubus_glaucus.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by/3.0/"
+        }
+      }
+    },
+    {
+      "id": "sauco",
+      "names": {
+        "common": "Andean elderberry",
+        "alternative": [
+          "sauco"
+        ]
+      },
+      "taxon": {
+        "genus": "Sambucus",
+        "species": "peruviana",
+        "authority": "Kunth",
+        "family": "Adoxaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/sauco.webp",
+        "alt": "Andean elderberry shrub with fruit clusters",
+        "width": 720,
+        "height": 478,
+        "credit": {
+          "title": "File:Sambucus peruviana of the Adoxaceae (8429008178).jpg",
+          "author": "Dick Culbert from Gibsons, B.C., Canada",
+          "licence": "CC BY 2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sambucus_peruviana_of_the_Adoxaceae_%288429008178%29.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+        }
+      }
+    },
+    {
+      "id": "aji-amarillo",
+      "names": {
+        "common": "Ají amarillo",
+        "alternative": [
+          "yellow chilli"
+        ]
+      },
+      "taxon": {
+        "genus": "Capsicum",
+        "species": "baccatum",
+        "authority": "(Willd.) Eshbaugh",
+        "family": "Solanaceae",
+        "infraspecific": "var. pendulum"
+      },
+      "crop_group": "vegetable",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit (pod), fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/aji-amarillo.webp",
+        "alt": "Yellow-orange ají amarillo pods",
+        "width": 720,
+        "height": 540,
+        "credit": {
+          "title": "File:Aji Amarillo pepper.jpg",
+          "author": "Luis Tamayo",
+          "licence": "CC BY-SA 2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Aji_Amarillo_pepper.jpg",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/2.0/"
+        }
+      }
+    },
+    {
+      "id": "rocoto",
+      "names": {
+        "common": "Rocoto",
+        "alternative": [
+          "locoto"
+        ]
+      },
+      "taxon": {
+        "genus": "Capsicum",
+        "species": "pubescens",
+        "authority": "Ruiz & Pav.",
+        "family": "Solanaceae"
+      },
+      "crop_group": "vegetable",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit (pod), fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "status": "pending",
+        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
+        "values": {}
+      },
+      "notes": [],
+      "flags": [],
+      "image": {
+        "file": "assets/img/crops/rocoto.webp",
+        "alt": "Red rocoto peppers, whole and cut open to show the black seeds",
+        "width": 720,
+        "height": 633,
+        "credit": {
+          "title": "File:Capsicum pubescens (Rocoto).JPG",
+          "author": "Falcodigiada",
+          "licence": "CC BY-SA 4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Capsicum_pubescens_%28Rocoto%29.JPG",
+          "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        }
+      }
     }
   ]
 }

@@ -13,6 +13,8 @@ export const CROP_GROUP_LABELS = Object.freeze({
   cereal: "Cereal",
   grain_legume: "Grain legume",
   root_tuber: "Root or tuber crop",
+  fruit: "Fruit",
+  vegetable: "Vegetable or condiment",
 });
 
 /** Display labels for the condition of the food as described. */
@@ -64,13 +66,15 @@ export function normaliseText(text) {
 }
 
 /**
- * Binomial name of a crop, e.g. "Chenopodium quinoa".
+ * Scientific name without authority, e.g. "Chenopodium quinoa" or
+ * "Passiflora tripartita var. mollissima".
  *
  * @param {object} crop Crop record.
  * @returns {string}
  */
 export function scientificName(crop) {
-  return `${crop.taxon.genus} ${crop.taxon.species}`;
+  const { genus, species, infraspecific } = crop.taxon;
+  return infraspecific ? `${genus} ${species} ${infraspecific}` : `${genus} ${species}`;
 }
 
 /**
@@ -94,13 +98,14 @@ export function searchableText(crop) {
 }
 
 /**
- * Whether every reported value of a crop has an identified source.
+ * Whether a crop has values and every one of them has an identified source.
  *
  * @param {object} crop Crop record.
  * @returns {boolean}
  */
 export function hasIdentifiedSource(crop) {
-  return verificationSummary(crop).unverified === 0;
+  const summary = verificationSummary(crop);
+  return summary.total > 0 && summary.unverified === 0;
 }
 
 /**

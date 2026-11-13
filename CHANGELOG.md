@@ -2,11 +2,21 @@
 
 All notable changes are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [semantic versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.3.0] – 2026-11-13
 
 ### Added
 
-- `npm run site:copy -- <directory>` copies the runtime files into another static site (for example, a GitHub Pages subfolder). It writes a `SOURCE.txt` marker with the source commit and refuses any non-empty directory that is not a previous copy.
+- 22 Andean crops (30 in total), including roots and tubers (potato, ulluco, yacón, arracacha, achira, chuño), grain legumes (lima bean, common bean, peanut), fruits (cape gooseberry, cherimoya, lúcuma, tree tomato, pepino dulce, sweet granadilla, banana passionfruit, naranjilla, pacay, Andean blackberry, Andean elderberry) and chilli peppers (ají amarillo, rocoto).
+- Composition values for seven of the new crops, from USDA SR Legacy records corroborated through secondary copies. Values that could not be corroborated were left out rather than estimated.
+- An explicit "composition pending" state for the 15 crops whose only candidate source (the Peruvian national food composition tables) could not be accessed. Schema and validation enforce that pending records carry no values.
+- Product photographs for every crop that has one, from Wikimedia Commons. Each was checked visually against the species and stored as WebP, with author, licence and source shown on the card and in a photo-credits section.
+- Infraspecific names (for example *Passiflora tripartita* var. *mollissima*), the crop groups "Fruit" and "Vegetable or condiment", and the edible parts "root", "rhizome" and "fruit".
+- `npm run site:copy -- <directory>` copies the runtime files and photos into another static site, writes a `SOURCE.txt` marker with the source commit, and refuses any non-empty directory that is not a previous copy.
+
+### Changed
+
+- All 11 DOIs in the bibliography were checked against Crossref metadata (`record_check: crossref`), and the missing DOI for Nowak, Du and Charrondière (2016) was added.
+- The header summary now reports how many crops have composition data.
 
 ## [0.2.0] – 2026-11-13
 

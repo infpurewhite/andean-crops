@@ -22,6 +22,9 @@ export const RUNTIME_FILES = Object.freeze([
   "data/derived/andean-crops-long.csv",
 ]);
 
+/** Directories copied recursively (photos referenced from the dataset). */
+export const RUNTIME_DIRECTORIES = Object.freeze(["assets/img"]);
+
 /** Marker file written into a copy; its presence allows the copy to be refreshed. */
 export const SOURCE_MARKER = "SOURCE.txt";
 

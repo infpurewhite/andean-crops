@@ -1,6 +1,6 @@
 # Andean Crops Nutrient Composition Explorer
 
-A curated, machine-readable dataset and a static web explorer for the proximate composition, energy and selected minerals of eight Andean crops. Every value records the state of the food, its source and how far it has been verified. Plausibility checks run in the browser and in continuous integration.
+A curated, machine-readable dataset and a static web explorer for the proximate composition, energy and selected minerals of 30 Andean crops. Every value records the state of the food, its source and how far it has been verified. Plausibility checks run in the browser and in continuous integration.
 
 **Live:** <https://anniececy.com/andean-crops/> (a copy made with `npm run site:copy`; `SOURCE.txt` there records the source commit).
 
@@ -14,20 +14,19 @@ The project follows food-composition conventions (FAO/INFOODS component identifi
 - **Cites its evidence.** Statements on bioactive compounds and antinutrients carry Harvard citations linked to a reference list with DOIs. Statements not yet checked against the source are marked.
 - **Supports search, filters, sorting, card and table views, and shareable URLs.** Search ignores diacritics, so "canihua" finds Cañihua.
 
-## Data status (version 0.2.0)
+## Data status (version 0.3.0)
 
-| Crop | Taxon | Food as described | Source of composition values | Values with a source |
-|---|---|---|---|---|
-| Quinoa | *Chenopodium quinoa* Willd. | Seed, dry | USDA SR Legacy, FDC 168874 (direct match) | 9/9 |
-| Kiwicha | *Amaranthus caudatus* L. | Seed, dry | USDA SR Legacy, FDC 170682 (proxy: species not specified) | 7/7 |
-| Cañihua | *Chenopodium pallidicaule* Aellen | Seed, dry | Not documented | 0/7 |
-| Tarwi | *Lupinus mutabilis* Sweet | Seed, dry (not eaten raw) | Not documented | 0/7 |
-| Maca | *Lepidium meyenii* Walp. | Hypocotyl, dried | Not documented; suspected composite of label and other values | 0/7 |
-| Purple corn | *Zea mays* L. | Kernel, dry | Not documented | 0/7 |
-| Mashua | *Tropaeolum tuberosum* Ruiz & Pav. | Tuber, fresh | Not documented | 0/7 |
-| Oca | *Oxalis tuberosa* Molina | Tuber, fresh | Not documented | 0/7 |
+The dataset covers 30 Andean crops. Composition data are entered only where a named source record could be traced; nothing is estimated to fill gaps.
 
-16 of 58 values are traced to a named source record. Those values were corroborated against secondary copies of the USDA records; the primary records were not accessed in this release. The [data audit](docs/data-audit.md) explains each finding and lists the curation backlog. Replacing the six undocumented records with values from one documented regional source is the highest priority.
+| Status | Crops | Values |
+|---|---|---|
+| **Source identified** (USDA SR Legacy; corroborated via secondary copies of the records) | Quinoa, kiwicha (proxy), potato, lima bean, common bean, peanut, cape gooseberry (proxy), cherimoya, naranjilla | 66 |
+| **Source not documented** (inherited from version 0.1; provisional) | Cañihua, tarwi, maca (suspected composite), purple corn, mashua, oca | 42 |
+| **Composition pending** (no accessible source yet) | Ulluco, yacón, arracacha, achira, chuño, lúcuma, tree tomato, pepino dulce, sweet granadilla, banana passionfruit, pacay, Andean blackberry, Andean elderberry, ají amarillo, rocoto | 0 |
+
+Several USDA-derived records are incomplete, because values that secondary copies did not report consistently were left out. No value has yet been checked against a primary record (`verified`). The [data audit](docs/data-audit.md) explains each finding and lists the curation backlog. The highest priority is the Peruvian national food composition tables, which would fill the 15 pending records and replace the six undocumented ones.
+
+Photographs come from Wikimedia Commons (CC0, public domain, CC BY or CC BY-SA). Each was checked visually against the species and is credited on its card and in the page's photo-credits section.
 
 ## Quick start
 
@@ -65,7 +64,7 @@ The copy includes `SOURCE.txt`, which records the source commit. Edit the data i
 | `npm run lint` | Lints with ESLint. |
 | `npm run check` | Runs all three. |
 | `npm run export` | Regenerates the long-format CSV from the JSON. A test fails if the CSV is out of date. |
-| `npm run check:references` | Checks every DOI against Crossref (needs internet access; optional `CROSSREF_MAILTO`). |
+| `npm run check:references` | Checks every DOI against Crossref (needs internet access; optional `CROSSREF_MAILTO`; behind a proxy, set `NODE_USE_ENV_PROXY=1`). |
 
 GitHub Actions runs `lint`, `validate` and `test` on pushes to `main` and on pull requests, and checks that the CSV is current. A separate manual workflow runs the reference check.
 
@@ -81,6 +80,7 @@ assets/js/
   dom.js                       Safe element construction (no innerHTML)
   app.js                       Browser controller and rendering
   main.js                      Entry point: loads the dataset
+assets/img/crops/              Product photographs (WebP, Wikimedia Commons; see credits)
 data/
   andean-crops.json            Canonical dataset (metadata, components, sources, crops)
   andean-crops.schema.json     JSON Schema (draft 2020-12)
@@ -98,7 +98,7 @@ Each crop record holds the taxon (with authority and APG family), crop group, ed
 
 ## Limitations
 
-- Six of eight records still lack a documented source. Treat their values as provisional.
+- Six records still lack a documented source; treat their values as provisional. Fifteen records have no composition values yet.
 - Values are single figures per 100 g edible portion. They do not show variation between genotypes, growing environments or analytical methods, or changes from processing and cooking.
 - Iron and calcium are totals; bioavailability (affected by phytate, oxalate and other factors) is not represented.
 - Fibre methods differ between sources: undocumented values may be crude fibre, which is not comparable with total dietary fibre.

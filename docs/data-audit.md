@@ -95,12 +95,12 @@ Version 0.1 kept the data inside the UI code and built HTML by interpolating str
 
 In priority order:
 
-1. **Replace the six undocumented records** with values from a single documented regional source, recording table codes, water and ash. Candidate: *Tablas peruanas de composición de alimentos* (Reyes García, Gómez-Sánchez Prieto and Espinoza Barrientos, 2017, 10th edn; Lima: Instituto Nacional de Salud). An 11th edition (2023) is reported. Check coverage of all eight crops and use the latest edition.
-2. **Verify quinoa and kiwicha** against the primary FoodData Central records (FDC 168874 and 170682), raise them to `verified`, and add kiwicha water and ash.
+1. **Replace the six undocumented records and fill the 15 pending records (added in 0.3.0)** with values from a single documented regional source, recording table codes, water and ash. Candidate: *Tablas peruanas de composición de alimentos* (Reyes García, Gómez-Sánchez Prieto and Espinoza Barrientos, 2017, 10th edn; Lima: Instituto Nacional de Salud). An 11th edition (2023) is reported. Use the latest edition. Its hosts could not be reached from the curation environment; a locally downloaded copy would remove this blocker.
+2. **Verify the nine USDA-derived records** against the primary FoodData Central records (an API key is needed), raise them to `verified`, and add the values left out in 0.3.0: kiwicha water and ash; lima-bean water and iron; common-bean water, ash and iron; potato ash and calcium; cape-gooseberry ash and fibre; cherimoya fat; naranjilla fibre, calcium and iron.
 3. **Check unchecked statements** against full texts: Carvajal-Larenas et al. (2016) for tarwi, and Wang and Zhu (2019) for maca.
 4. **Complete the oca oxalate citation.** Candidate: the *Plant Foods for Human Nutrition* article "Influence of sunlight exposure and traditional dehydration on chemical and nutritional properties of *Oxalis tuberosa* (oca) tubers" (authors and DOI to be confirmed; record: <https://open-science.unesco.org/records/5qafs-aef94>).
-5. **Add the DOI** for Nowak, Du and Charrondière (2016) after checking it in Crossref.
-6. **Run `npm run check:references`** with internet access and resolve any mismatch.
+5. ~~Add the DOI for Nowak, Du and Charrondière (2016).~~ Done in 0.3.0 (doi:10.1016/j.foodchem.2015.02.111, checked in Crossref).
+6. ~~Run `npm run check:references`.~~ Done in 0.3.0: all 11 DOIs match Crossref.
 7. **Confirm taxonomic names** against World Flora Online or Plants of the World Online.
 8. **Represent variability.** Where sources give ranges, means with standard deviations or sample sizes, extend the schema to store them and show them.
 9. **Purple corn.** The carbohydrate (74.2 g) and fibre (7.3 g) values coincide with the USDA SR Legacy record for yellow corn grain, whereas the other values do not *[unverified]*. Check this when replacing the record.
