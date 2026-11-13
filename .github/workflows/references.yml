@@ -1,0 +1,22 @@
+name: Reference check
+
+# Compares every DOI in the dataset bibliography with Crossref metadata.
+# Run manually; it depends on an external service.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  crossref:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check:references

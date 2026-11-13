@@ -1,0 +1,737 @@
+{
+  "$schema": "./andean-crops.schema.json",
+  "metadata": {
+    "title": "Andean crops nutrient composition dataset",
+    "version": "0.2.0",
+    "date": "2026-11-13",
+    "description": "Proximate composition, energy and selected minerals of eight Andean crops, with per-value provenance and verification status.",
+    "basis": "All values are per 100 g edible portion of the food in the state described for each crop (dry seed or kernel, dried hypocotyl or fresh tuber). Values are not comparable across these states without conversion.",
+    "verification_levels": {
+      "verified": "Checked against the primary source record by a curator.",
+      "corroborated": "Matches the named source record as reproduced by at least one independent secondary copy; the primary record was not accessed.",
+      "unverified": "Source not identified, or value not checked against any source."
+    },
+    "methods": [
+      {
+        "id": "basis",
+        "text": "Values are expressed per 100 g edible portion of the food as described. Dry-matter values are calculated as value × 100 / (100 − water) and are shown only where water content is available. Per-energy values are calculated as value × 100 / energy and express nutrient density per 100 kcal.",
+        "refs": []
+      },
+      {
+        "id": "food-matching",
+        "text": "Each record states whether the source food matches the crop directly or is a proxy (for example, a source that does not specify the species).",
+        "refs": ["fao-infoods-2012-matching"]
+      },
+      {
+        "id": "energy-check",
+        "text": "Energy is recalculated with general conversion factors of 4 kcal/g for protein and available carbohydrate, 9 kcal/g for fat and 2 kcal/g for dietary fibre, approximating available carbohydrate as total carbohydrate by difference minus dietary fibre. A difference of more than 10 % from the reported energy is flagged for review. The 10 % tolerance is a screening heuristic set for this dataset, not a published limit.",
+        "refs": ["fao-2003-fnp77"]
+      },
+      {
+        "id": "proximate-sum",
+        "text": "Where water and ash are reported, the sum of water, protein, fat, total carbohydrate and ash is expected to lie between 97 and 103 g/100 g. When carbohydrate is calculated by difference the sum equals 100 g by construction, so this check mainly detects transcription errors and values combined from different samples.",
+        "refs": ["greenfield-southgate-2003", "fao-infoods-2012-checking"]
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "energy",
+      "label": "Energy",
+      "unit": "kcal",
+      "infoods": "ENERC",
+      "group": "energy",
+      "decimals": 0,
+      "description": "Metabolisable energy as reported by the source."
+    },
+    {
+      "id": "water",
+      "label": "Water",
+      "unit": "g",
+      "infoods": "WATER",
+      "group": "proximate",
+      "decimals": 1,
+      "description": "Moisture content."
+    },
+    {
+      "id": "protein",
+      "label": "Protein",
+      "unit": "g",
+      "infoods": "PROCNT",
+      "group": "proximate",
+      "decimals": 1,
+      "description": "Total protein, conventionally calculated from total nitrogen; the nitrogen conversion factor is not recorded."
+    },
+    {
+      "id": "fat",
+      "label": "Fat, total",
+      "unit": "g",
+      "infoods": "FAT",
+      "group": "proximate",
+      "decimals": 1,
+      "description": "Total lipid. INFOODS distinguishes fat tagnames by analytical method; the method is not recorded here."
+    },
+    {
+      "id": "carbohydrate_total",
+      "label": "Carbohydrate, total (by difference)",
+      "unit": "g",
+      "infoods": "CHOCDF",
+      "group": "proximate",
+      "decimals": 1,
+      "description": "Total carbohydrate calculated by difference; includes dietary fibre. It is not available carbohydrate."
+    },
+    {
+      "id": "fibre",
+      "label": "Dietary fibre",
+      "unit": "g",
+      "infoods": "FIBTG",
+      "group": "proximate",
+      "decimals": 1,
+      "description": "Total dietary fibre for USDA-sourced values. For undocumented sources the method is unknown and the value may be crude fibre (INFOODS FIBC), which is not comparable with total dietary fibre."
+    },
+    {
+      "id": "ash",
+      "label": "Ash",
+      "unit": "g",
+      "infoods": "ASH",
+      "group": "proximate",
+      "decimals": 1,
+      "description": "Total inorganic residue."
+    },
+    {
+      "id": "calcium",
+      "label": "Calcium",
+      "unit": "mg",
+      "infoods": "CA",
+      "group": "mineral",
+      "decimals": 0,
+      "description": "Total calcium."
+    },
+    {
+      "id": "iron",
+      "label": "Iron",
+      "unit": "mg",
+      "infoods": "FE",
+      "group": "mineral",
+      "decimals": 1,
+      "description": "Total iron; bioavailability is not represented."
+    }
+  ],
+  "sources": [
+    {
+      "id": "legacy-v0",
+      "type": "internal",
+      "authors": [{ "literal": "andean-crops repository" }],
+      "year": null,
+      "title": "Values carried over from version 0.1 of this repository, for which no primary source was documented",
+      "record_check": "not-applicable"
+    },
+    {
+      "id": "usda-sr-legacy-2018",
+      "type": "database",
+      "authors": [{ "literal": "U.S. Department of Agriculture, Agricultural Research Service" }],
+      "year": 2018,
+      "title": "USDA National Nutrient Database for Standard Reference, Legacy Release",
+      "publisher": "Nutrient Data Laboratory, Beltsville Human Nutrition Research Center",
+      "place": "Beltsville, MD",
+      "url": "https://fdc.nal.usda.gov/",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "fao-2003-fnp77",
+      "type": "report",
+      "authors": [{ "literal": "FAO" }],
+      "year": 2003,
+      "title": "Food energy – methods of analysis and conversion factors. Report of a technical workshop, Rome, 3–6 December 2002",
+      "container": "FAO Food and Nutrition Paper 77",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "place": "Rome",
+      "url": "https://www.fao.org/3/Y5022E/y5022e00.htm",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "greenfield-southgate-2003",
+      "type": "book",
+      "authors": [
+        { "family": "Greenfield", "given": "H." },
+        { "family": "Southgate", "given": "D.A.T." }
+      ],
+      "year": 2003,
+      "title": "Food composition data: production, management and use",
+      "edition": "2nd edn",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "place": "Rome",
+      "url": "https://www.fao.org/3/y4705e/y4705e.pdf",
+      "record_check": "secondary-reference"
+    },
+    {
+      "id": "fao-infoods-2012-checking",
+      "type": "guideline",
+      "authors": [{ "literal": "FAO/INFOODS" }],
+      "year": 2012,
+      "title": "FAO/INFOODS guidelines for checking food composition data prior to the publication of a user table/database – Version 1.0",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "place": "Rome",
+      "url": "https://www.fao.org/infoods/infoods/standards-guidelines/en/",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "fao-infoods-2012-matching",
+      "type": "guideline",
+      "authors": [{ "literal": "FAO/INFOODS" }],
+      "year": 2012,
+      "title": "FAO/INFOODS guidelines for food matching – Version 1.2",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "place": "Rome",
+      "url": "https://fao.org/fileadmin/templates/food_composition/documents/upload/INFOODSGuidelinesforFoodMatching_version_1_2.pdf",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "repo-carrasco-2003",
+      "type": "article",
+      "authors": [
+        { "family": "Repo-Carrasco", "given": "R." },
+        { "family": "Espinoza", "given": "C." },
+        { "family": "Jacobsen", "given": "S.-E." }
+      ],
+      "year": 2003,
+      "title": "Nutritional value and use of the Andean crops quinoa (Chenopodium quinoa) and kañiwa (Chenopodium pallidicaule)",
+      "container": "Food Reviews International",
+      "volume": "19",
+      "pages": "179–189",
+      "doi": "10.1081/FRI-120018884",
+      "record_check": "secondary-reference"
+    },
+    {
+      "id": "repo-carrasco-valencia-2010",
+      "type": "article",
+      "authors": [
+        { "family": "Repo-Carrasco-Valencia", "given": "R." },
+        { "family": "Hellström", "given": "J.K." },
+        { "family": "Pihlava", "given": "J.-M." },
+        { "family": "Mattila", "given": "P.H." }
+      ],
+      "year": 2010,
+      "title": "Flavonoids and other phenolic compounds in Andean indigenous grains: quinoa (Chenopodium quinoa), kañiwa (Chenopodium pallidicaule) and kiwicha (Amaranthus caudatus)",
+      "container": "Food Chemistry",
+      "volume": "120",
+      "issue": "1",
+      "pages": "128–133",
+      "doi": "10.1016/j.foodchem.2009.09.087",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "nowak-2016",
+      "type": "article",
+      "authors": [
+        { "family": "Nowak", "given": "V." },
+        { "family": "Du", "given": "J." },
+        { "family": "Charrondière", "given": "U.R." }
+      ],
+      "year": 2016,
+      "title": "Assessment of the nutritional composition of quinoa (Chenopodium quinoa Willd.)",
+      "container": "Food Chemistry",
+      "volume": "193",
+      "pages": "47–54",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "he-2002",
+      "type": "article",
+      "authors": [
+        { "family": "He", "given": "H.-P." },
+        { "family": "Cai", "given": "Y." },
+        { "family": "Sun", "given": "M." },
+        { "family": "Corke", "given": "H." }
+      ],
+      "year": 2002,
+      "title": "Extraction and purification of squalene from Amaranthus grain",
+      "container": "Journal of Agricultural and Food Chemistry",
+      "volume": "50",
+      "issue": "2",
+      "pages": "368–372",
+      "doi": "10.1021/jf010918p",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "carvajal-larenas-2016",
+      "type": "article",
+      "authors": [
+        { "family": "Carvajal-Larenas", "given": "F.E." },
+        { "family": "Linnemann", "given": "A.R." },
+        { "family": "Nout", "given": "M.J.R." },
+        { "family": "Koziol", "given": "M." },
+        { "family": "van Boekel", "given": "M.A.J.S." }
+      ],
+      "year": 2016,
+      "title": "Lupinus mutabilis: composition, uses, toxicology, and debittering",
+      "container": "Critical Reviews in Food Science and Nutrition",
+      "volume": "56",
+      "issue": "9",
+      "pages": "1454–1487",
+      "doi": "10.1080/10408398.2013.772089",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "gonzales-2012",
+      "type": "article",
+      "authors": [{ "family": "Gonzales", "given": "G.F." }],
+      "year": 2012,
+      "title": "Ethnobiology and ethnopharmacology of Lepidium meyenii (maca), a plant from the Peruvian highlands",
+      "container": "Evidence-Based Complementary and Alternative Medicine",
+      "volume": "2012",
+      "pages": "193496",
+      "doi": "10.1155/2012/193496",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "wang-zhu-2019",
+      "type": "article",
+      "authors": [
+        { "family": "Wang", "given": "S." },
+        { "family": "Zhu", "given": "F." }
+      ],
+      "year": 2019,
+      "title": "Chemical composition and health effects of maca (Lepidium meyenii)",
+      "container": "Food Chemistry",
+      "volume": "288",
+      "pages": "422–443",
+      "doi": "10.1016/j.foodchem.2019.02.071",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "pedreschi-2007",
+      "type": "article",
+      "authors": [
+        { "family": "Pedreschi", "given": "R." },
+        { "family": "Cisneros-Zevallos", "given": "L." }
+      ],
+      "year": 2007,
+      "title": "Phenolic profiles of Andean purple corn (Zea mays L.)",
+      "container": "Food Chemistry",
+      "volume": "100",
+      "issue": "3",
+      "pages": "956–963",
+      "doi": "10.1016/j.foodchem.2005.11.004",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "lao-2017",
+      "type": "article",
+      "authors": [
+        { "family": "Lao", "given": "F." },
+        { "family": "Sigurdson", "given": "G.T." },
+        { "family": "Giusti", "given": "M.M." }
+      ],
+      "year": 2017,
+      "title": "Health benefits of purple corn (Zea mays L.) phenolic compounds",
+      "container": "Comprehensive Reviews in Food Science and Food Safety",
+      "volume": "16",
+      "issue": "2",
+      "pages": "234–246",
+      "doi": "10.1111/1541-4337.12249",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "ortega-2006",
+      "type": "article",
+      "authors": [
+        { "family": "Ortega", "given": "O.R." },
+        { "family": "Kliebenstein", "given": "D.J." },
+        { "family": "Arbizu", "given": "C." },
+        { "family": "Ortega", "given": "R." },
+        { "family": "Quirós", "given": "C.F." }
+      ],
+      "year": 2006,
+      "title": "Glucosinolate survey of cultivated and feral mashua (Tropaeolum tuberosum Ruíz & Pavón) in the Cuzco region of Peru",
+      "container": "Economic Botany",
+      "volume": "60",
+      "issue": "3",
+      "pages": "254–264",
+      "doi": "10.1663/0013-0001(2006)60[254:GSOCAF]2.0.CO;2",
+      "record_check": "indexed-record"
+    },
+    {
+      "id": "campos-2006",
+      "type": "article",
+      "authors": [
+        { "family": "Campos", "given": "D." },
+        { "family": "Noratto", "given": "G." },
+        { "family": "Chirinos", "given": "R." },
+        { "family": "Arbizu", "given": "C." },
+        { "family": "Roca", "given": "W." },
+        { "family": "Cisneros-Zevallos", "given": "L." }
+      ],
+      "year": 2006,
+      "title": "Antioxidant capacity and secondary metabolites in four species of Andean tuber crops: native potato (Solanum sp.), mashua (Tropaeolum tuberosum Ruiz & Pavón), oca (Oxalis tuberosa Molina) and ulluco (Ullucus tuberosus Caldas)",
+      "container": "Journal of the Science of Food and Agriculture",
+      "volume": "86",
+      "issue": "10",
+      "pages": "1481–1488",
+      "doi": "10.1002/jsfa.2529",
+      "record_check": "indexed-record"
+    }
+  ],
+  "crops": [
+    {
+      "id": "quinoa",
+      "names": { "common": "Quinoa", "alternative": ["quinua"] },
+      "taxon": { "genus": "Chenopodium", "species": "quinoa", "authority": "Willd.", "family": "Amaranthaceae" },
+      "crop_group": "pseudocereal",
+      "edible_part": "seed",
+      "food": { "description": "Quinoa, uncooked", "condition": "dry" },
+      "composition": {
+        "source": "usda-sr-legacy-2018",
+        "source_record": "FDC ID 168874 (SR Legacy NDB 20035), 'Quinoa, uncooked'",
+        "match": "direct",
+        "values": {
+          "energy": { "value": 368, "verification": "corroborated" },
+          "water": { "value": 13.28, "verification": "corroborated" },
+          "protein": { "value": 14.12, "verification": "corroborated" },
+          "fat": { "value": 6.07, "verification": "corroborated" },
+          "carbohydrate_total": { "value": 64.16, "verification": "corroborated" },
+          "fibre": { "value": 7.0, "verification": "corroborated" },
+          "ash": { "value": 2.38, "verification": "corroborated" },
+          "calcium": { "value": 47, "verification": "corroborated" },
+          "iron": { "value": 4.57, "verification": "corroborated" }
+        }
+      },
+      "notes": [
+        {
+          "kind": "bioactive",
+          "text": "Flavonoids, chiefly quercetin and kaempferol glycosides; total flavonoids in the quinoa and kañiwa samples studied ranged from 36.2 to 144.3 mg/100 g.",
+          "refs": ["repo-carrasco-valencia-2010"],
+          "checked": true
+        },
+        {
+          "kind": "antinutrient",
+          "text": "Bitter saponins are concentrated in the outer seed layers; grain is usually dehulled or polished and washed before use, and low-saponin ('sweet') cultivars are being developed.",
+          "refs": ["nowak-2016"],
+          "checked": true
+        },
+        {
+          "kind": "context",
+          "text": "Seed oil with linoleic acid as the main fatty acid and a high tocopherol content (reported jointly for quinoa and kañiwa).",
+          "refs": ["repo-carrasco-2003"],
+          "checked": true
+        }
+      ],
+      "flags": []
+    },
+    {
+      "id": "kiwicha",
+      "names": { "common": "Kiwicha", "alternative": ["Andean amaranth"] },
+      "taxon": { "genus": "Amaranthus", "species": "caudatus", "authority": "L.", "family": "Amaranthaceae" },
+      "crop_group": "pseudocereal",
+      "edible_part": "seed",
+      "food": {
+        "description": "Amaranth grain, uncooked (species not specified by the source)",
+        "condition": "dry",
+        "note": "Water and ash were not added because they could not be corroborated for this source record; dry-matter values are therefore unavailable."
+      },
+      "composition": {
+        "source": "usda-sr-legacy-2018",
+        "source_record": "FDC ID 170682 (SR Legacy NDB 20001), 'Amaranth grain, uncooked'",
+        "match": "proxy",
+        "values": {
+          "energy": { "value": 371, "verification": "corroborated" },
+          "protein": { "value": 13.56, "verification": "corroborated" },
+          "fat": { "value": 7.02, "verification": "corroborated" },
+          "carbohydrate_total": { "value": 65.25, "verification": "corroborated" },
+          "fibre": { "value": 6.7, "verification": "corroborated" },
+          "calcium": { "value": 159, "verification": "corroborated" },
+          "iron": { "value": 7.61, "verification": "corroborated" }
+        }
+      },
+      "notes": [
+        {
+          "kind": "bioactive",
+          "text": "No quantifiable flavonoids were found in the kiwicha samples studied, in contrast to quinoa and kañiwa.",
+          "refs": ["repo-carrasco-valencia-2010"],
+          "checked": true
+        },
+        {
+          "kind": "bioactive",
+          "text": "Amaranth seed oil contains squalene; one study reported 4.2 % squalene in crude Amaranthus oil.",
+          "refs": ["he-2002"],
+          "checked": true
+        }
+      ],
+      "flags": [
+        {
+          "code": "proxy-match",
+          "text": "Composition values describe amaranth grain of unspecified species and are used as a proxy for Amaranthus caudatus."
+        }
+      ]
+    },
+    {
+      "id": "canihua",
+      "names": { "common": "Cañihua", "alternative": ["kañiwa", "cañahua"] },
+      "taxon": { "genus": "Chenopodium", "species": "pallidicaule", "authority": "Aellen", "family": "Amaranthaceae" },
+      "crop_group": "pseudocereal",
+      "edible_part": "seed",
+      "food": {
+        "description": "Seed, dry (state as stated in version 0.1; not documented by a source)",
+        "condition": "dry"
+      },
+      "composition": {
+        "source": "legacy-v0",
+        "match": "unknown",
+        "values": {
+          "energy": { "value": 343, "verification": "unverified" },
+          "protein": { "value": 15.7, "verification": "unverified" },
+          "fat": { "value": 4.2, "verification": "unverified" },
+          "carbohydrate_total": { "value": 63.8, "verification": "unverified" },
+          "fibre": { "value": 9.8, "verification": "unverified" },
+          "calcium": { "value": 110, "verification": "unverified" },
+          "iron": { "value": 13.0, "verification": "unverified" }
+        }
+      },
+      "notes": [
+        {
+          "kind": "bioactive",
+          "text": "Flavonoids, chiefly quercetin and isorhamnetin glycosides.",
+          "refs": ["repo-carrasco-valencia-2010"],
+          "checked": true
+        },
+        {
+          "kind": "context",
+          "text": "Seed oil with linoleic acid as the main fatty acid and a high tocopherol content (reported jointly for quinoa and kañiwa).",
+          "refs": ["repo-carrasco-2003"],
+          "checked": true
+        }
+      ],
+      "flags": []
+    },
+    {
+      "id": "tarwi",
+      "names": { "common": "Tarwi", "alternative": ["chocho", "Andean lupin"] },
+      "taxon": { "genus": "Lupinus", "species": "mutabilis", "authority": "Sweet", "family": "Fabaceae" },
+      "crop_group": "grain_legume",
+      "edible_part": "seed",
+      "food": {
+        "description": "Seed, dry (debittering status not documented)",
+        "condition": "dry",
+        "note": "Debittered, cooked tarwi as eaten has a much higher water content than the dry seed."
+      },
+      "composition": {
+        "source": "legacy-v0",
+        "match": "unknown",
+        "values": {
+          "energy": { "value": 411, "verification": "unverified" },
+          "protein": { "value": 44.3, "verification": "unverified" },
+          "fat": { "value": 16.5, "verification": "unverified" },
+          "carbohydrate_total": { "value": 28.2, "verification": "unverified" },
+          "fibre": { "value": 11.2, "verification": "unverified" },
+          "calcium": { "value": 93, "verification": "unverified" },
+          "iron": { "value": 5.3, "verification": "unverified" }
+        }
+      },
+      "notes": [
+        {
+          "kind": "antinutrient",
+          "text": "Raw seeds contain bitter, toxic quinolizidine alkaloids (mainly lupanine, with sparteine and hydroxylupanines) and are debittered before consumption, traditionally by soaking, cooking and repeated washing in water.",
+          "refs": ["carvajal-larenas-2016"],
+          "checked": false
+        },
+        {
+          "kind": "context",
+          "text": "Lipid fraction dominated by oleic acid (monounsaturated) and linoleic acid (polyunsaturated).",
+          "refs": ["carvajal-larenas-2016"],
+          "checked": false
+        }
+      ],
+      "flags": [
+        {
+          "code": "not-eaten-raw",
+          "text": "The raw seed is not eaten; values do not describe the debittered food as consumed."
+        }
+      ]
+    },
+    {
+      "id": "maca",
+      "names": { "common": "Maca", "alternative": [] },
+      "taxon": {
+        "genus": "Lepidium",
+        "species": "meyenii",
+        "authority": "Walp.",
+        "family": "Brassicaceae",
+        "note": "Some authors treat cultivated maca as Lepidium peruvianum."
+      },
+      "crop_group": "root_tuber",
+      "edible_part": "hypocotyl",
+      "food": {
+        "description": "Hypocotyl, dried (inferred from energy density; not documented by a source)",
+        "condition": "dried"
+      },
+      "composition": {
+        "source": "legacy-v0",
+        "match": "unknown",
+        "values": {
+          "energy": { "value": 325, "verification": "unverified" },
+          "protein": { "value": 10.2, "verification": "unverified" },
+          "fat": { "value": 0.9, "verification": "unverified" },
+          "carbohydrate_total": { "value": 71.4, "verification": "unverified" },
+          "fibre": { "value": 8.5, "verification": "unverified" },
+          "calcium": { "value": 250, "verification": "unverified" },
+          "iron": { "value": 14.8, "verification": "unverified" }
+        }
+      },
+      "notes": [
+        {
+          "kind": "context",
+          "text": "Cultivated in the central Andes of Peru at about 4000–4500 m altitude.",
+          "refs": ["gonzales-2012"],
+          "checked": true
+        },
+        {
+          "kind": "bioactive",
+          "text": "Glucosinolates, predominantly benzyl glucosinolate (glucotropaeolin).",
+          "refs": ["wang-zhu-2019"],
+          "checked": false
+        },
+        {
+          "kind": "bioactive",
+          "text": "Macamides (N-benzylalkamides) and macaenes; macamides are reported to form mainly during post-harvest drying.",
+          "refs": ["wang-zhu-2019"],
+          "checked": false
+        },
+        {
+          "kind": "context",
+          "text": "Clinical evidence for the health effects attributed to maca is limited.",
+          "refs": ["wang-zhu-2019"],
+          "checked": true
+        }
+      ],
+      "flags": [
+        {
+          "code": "composite-suspected",
+          "text": "Energy, carbohydrate, calcium and iron coincide with values declared on at least one commercial maca-powder label (rounded label declarations, not analytical data). The origin of the other values is unknown, so the record may combine values from different products or samples."
+        }
+      ]
+    },
+    {
+      "id": "purple-corn",
+      "names": { "common": "Purple corn", "alternative": ["maíz morado"] },
+      "taxon": {
+        "genus": "Zea",
+        "species": "mays",
+        "authority": "L.",
+        "family": "Poaceae",
+        "note": "Purple-pigmented Andean maize. Version 0.1 used the informal name 'Zea mays amylacea', which is not used here."
+      },
+      "crop_group": "cereal",
+      "edible_part": "kernel",
+      "food": {
+        "description": "Kernel, dry (not documented by a source)",
+        "condition": "dry"
+      },
+      "composition": {
+        "source": "legacy-v0",
+        "match": "unknown",
+        "values": {
+          "energy": { "value": 356, "verification": "unverified" },
+          "protein": { "value": 8.5, "verification": "unverified" },
+          "fat": { "value": 4.3, "verification": "unverified" },
+          "carbohydrate_total": { "value": 74.2, "verification": "unverified" },
+          "fibre": { "value": 7.3, "verification": "unverified" },
+          "calcium": { "value": 18, "verification": "unverified" },
+          "iron": { "value": 2.1, "verification": "unverified" }
+        }
+      },
+      "notes": [
+        {
+          "kind": "bioactive",
+          "text": "Anthocyanins (cyanidin-3-glucoside, pelargonidin-3-glucoside and peonidin-3-glucoside, with acylated forms), together with p-coumaric and ferulic acids and quercetin derivatives.",
+          "refs": ["pedreschi-2007"],
+          "checked": true
+        },
+        {
+          "kind": "context",
+          "text": "Reported health effects of purple-corn phenolics come mainly from cell and animal studies; evidence from human studies is limited.",
+          "refs": ["lao-2017"],
+          "checked": true
+        }
+      ],
+      "flags": []
+    },
+    {
+      "id": "mashua",
+      "names": { "common": "Mashua", "alternative": ["isaño"] },
+      "taxon": { "genus": "Tropaeolum", "species": "tuberosum", "authority": "Ruiz & Pav.", "family": "Tropaeolaceae" },
+      "crop_group": "root_tuber",
+      "edible_part": "tuber",
+      "food": {
+        "description": "Tuber, fresh (inferred from energy density; not documented by a source)",
+        "condition": "fresh"
+      },
+      "composition": {
+        "source": "legacy-v0",
+        "match": "unknown",
+        "values": {
+          "energy": { "value": 52, "verification": "unverified" },
+          "protein": { "value": 1.5, "verification": "unverified" },
+          "fat": { "value": 0.2, "verification": "unverified" },
+          "carbohydrate_total": { "value": 11.3, "verification": "unverified" },
+          "fibre": { "value": 1.8, "verification": "unverified" },
+          "calcium": { "value": 12, "verification": "unverified" },
+          "iron": { "value": 1.2, "verification": "unverified" }
+        }
+      },
+      "notes": [
+        {
+          "kind": "bioactive",
+          "text": "Three aromatic glucosinolates identified; total contents ranged from 0.27 to 50.74 µmol/g dried tuber and were highest in feral plants.",
+          "refs": ["ortega-2006"],
+          "checked": true
+        },
+        {
+          "kind": "bioactive",
+          "text": "Highest antioxidant capacity and phenolic, anthocyanin and carotenoid contents of the four Andean tuber crops compared (native potato, mashua, oca and ulluco).",
+          "refs": ["campos-2006"],
+          "checked": true
+        }
+      ],
+      "flags": []
+    },
+    {
+      "id": "oca",
+      "names": { "common": "Oca", "alternative": ["New Zealand yam"] },
+      "taxon": { "genus": "Oxalis", "species": "tuberosa", "authority": "Molina", "family": "Oxalidaceae" },
+      "crop_group": "root_tuber",
+      "edible_part": "tuber",
+      "food": {
+        "description": "Tuber, fresh (inferred from energy density; not documented by a source)",
+        "condition": "fresh"
+      },
+      "composition": {
+        "source": "legacy-v0",
+        "match": "unknown",
+        "values": {
+          "energy": { "value": 61, "verification": "unverified" },
+          "protein": { "value": 1.1, "verification": "unverified" },
+          "fat": { "value": 0.6, "verification": "unverified" },
+          "carbohydrate_total": { "value": 13.3, "verification": "unverified" },
+          "fibre": { "value": 1.4, "verification": "unverified" },
+          "calcium": { "value": 19, "verification": "unverified" },
+          "iron": { "value": 1.6, "verification": "unverified" }
+        }
+      },
+      "notes": [
+        {
+          "kind": "antinutrient",
+          "text": "Contains oxalate; contents vary between cultivars and are reported to fall during traditional post-harvest exposure to sunlight, which also raises sugar content.",
+          "refs": [],
+          "checked": false
+        },
+        {
+          "kind": "bioactive",
+          "text": "Analysed for antioxidant capacity, phenolics, anthocyanins and carotenoids alongside native potato, mashua and ulluco; mashua had the highest values.",
+          "refs": ["campos-2006"],
+          "checked": true
+        }
+      ],
+      "flags": []
+    }
+  ]
+}
