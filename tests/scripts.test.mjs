@@ -1,6 +1,10 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { RUNTIME_FILES, SOURCE_MARKER, assertSafeTarget } from "../scripts/lib/site-files.mjs";
 import { CSV_COLUMNS, csvField, tidyRows, toCsv } from "../scripts/lib/tidy-export.mjs";
 import { compareWithCrossref, crossrefYear, normaliseTitle, titleSimilarity } from "../scripts/lib/crossref.mjs";
 import { resolveRequestPath } from "../scripts/lib/static-path.mjs";
@@ -72,6 +76,48 @@ describe("Crossref comparison", () => {
   it("prefers the print year", () => {
     assert.equal(crossrefYear({ "published-print": { "date-parts": [[2016]] }, issued: { "date-parts": [[2015]] } }), 2016);
     assert.equal(crossrefYear({}), null);
+  });
+});
+
+describe("site copy", () => {
+  const repoRoot = fileURLToPath(new URL("..", import.meta.url));
+
+  it("lists every runtime file, including all imported modules", () => {
+    for (const file of RUNTIME_FILES) assert.ok(existsSync(join(repoRoot, file)), `${file} is missing`);
+
+    const listed = new Set(RUNTIME_FILES);
+    const html = readFileSync(join(repoRoot, "index.html"), "utf8");
+    for (const [, path] of html.matchAll(/(?:src|href)="((?:assets|data)\/[^"]+)"/g)) {
+      assert.ok(listed.has(path), `index.html references ${path}, which is not in RUNTIME_FILES`);
+    }
+    for (const file of RUNTIME_FILES.filter((f) => f.startsWith("assets/js/"))) {
+      const source = readFileSync(join(repoRoot, file), "utf8");
+      for (const [, module] of source.matchAll(/from "\.\/([\w-]+\.js)"/g)) {
+        assert.ok(listed.has(`assets/js/${module}`), `${file} imports ${module}, which is not in RUNTIME_FILES`);
+      }
+    }
+  });
+
+  it("refuses unsafe targets and accepts new, empty or previous-copy directories", async () => {
+    const scratch = mkdtempSync(join(tmpdir(), "andean-copy-"));
+    try {
+      await assertSafeTarget(join(scratch, "new"), repoRoot);
+      mkdirSync(join(scratch, "empty"));
+      await assertSafeTarget(join(scratch, "empty"), repoRoot);
+
+      mkdirSync(join(scratch, "site"));
+      writeFileSync(join(scratch, "site", "index.html"), "<p>personal site</p>");
+      await assert.rejects(assertSafeTarget(join(scratch, "site"), repoRoot), /not a previous copy/);
+
+      mkdirSync(join(scratch, "copy"));
+      writeFileSync(join(scratch, "copy", "index.html"), "old copy");
+      writeFileSync(join(scratch, "copy", SOURCE_MARKER), "marker");
+      await assertSafeTarget(join(scratch, "copy"), repoRoot);
+
+      await assert.rejects(assertSafeTarget(join(repoRoot, "build"), repoRoot), /outside this repository/);
+    } finally {
+      rmSync(scratch, { recursive: true, force: true });
+    }
   });
 });
 

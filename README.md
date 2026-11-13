@@ -41,6 +41,19 @@ npm start
 
 Then open <http://127.0.0.1:8000/>. Browsers block module scripts and `fetch()` on `file://` pages, so serve the folder over HTTP rather than opening `index.html` directly. Any static server works, for example `python3 -m http.server`.
 
+## Hosting
+
+The site is static and needs no build step.
+
+- **GitHub Pages for this repository:** in Settings → Pages, deploy from branch `main`, folder `/ (root)`.
+- **Inside another static site:** copy the runtime files into a subfolder of that site, then commit them there. For example:
+
+```bash
+npm run site:copy -- ../anniececy-web/andean-crops
+```
+
+The copy includes `SOURCE.txt`, which records the source commit. Edit the data in this repository, never in the copy, and re-run the command to update it. The script refuses any non-empty directory that is not a previous copy, so it cannot overwrite the host site's own files.
+
 ## Quality assurance
 
 | Command | What it does |

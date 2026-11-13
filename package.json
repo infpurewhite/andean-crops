@@ -14,7 +14,8 @@
     "validate": "node scripts/validate-dataset.mjs",
     "export": "node scripts/export-csv.mjs",
     "check": "npm run lint && npm run validate && npm test",
-    "check:references": "node scripts/check-references.mjs"
+    "check:references": "node scripts/check-references.mjs",
+    "site:copy": "node scripts/copy-site.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

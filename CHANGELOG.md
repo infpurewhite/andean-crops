@@ -2,6 +2,12 @@
 
 All notable changes are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [semantic versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- `npm run site:copy -- <directory>` copies the runtime files into another static site (for example, a GitHub Pages subfolder). It writes a `SOURCE.txt` marker with the source commit and refuses any non-empty directory that is not a previous copy.
+
 ## [0.2.0] – 2026-11-13
 
 A scientific and technical overhaul. See [docs/data-audit.md](docs/data-audit.md) for the evidence behind each data change.
