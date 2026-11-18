@@ -3,43 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nutritional database and biochemical profiles of Andean agricultural cultivars normalized per 100g edible portion.">
-  <title>Andean Agricultural &amp; Nutritional Observatory</title>
+  <meta name="description" data-i18n-content="meta.description" content="Nutritional database and biochemical profiles of Andean agricultural cultivars normalized per 100g edible portion.">
+  <title data-i18n="meta.title">Andean Agricultural &amp; Nutritional Observatory</title>
+  <link rel="alternate" hreflang="en" href="./?lang=en">
+  <link rel="alternate" hreflang="es" href="./?lang=es">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <header class="app-header">
     <div class="header-inner">
+      <nav class="lang-switch" data-i18n-aria-label="lang.aria" aria-label="Language">
+        <button type="button" class="lang-btn" data-lang="en" lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="es" lang="es" aria-pressed="false">ES</button>
+      </nav>
       <div class="header-branding">
-        <span class="badge">Agrobiological Observatory</span>
-        <h1>Andean Cultivar Profiles</h1>
-        <p>Nutritional, biochemical, and phytochemical indicators standardized per 100g dry/edible portion.</p>
+        <span class="badge" data-i18n="header.badge">Agrobiological Observatory</span>
+        <h1 data-i18n="header.title">Andean Cultivar Profiles</h1>
+        <p data-i18n="header.subtitle">Nutritional, biochemical, and phytochemical indicators standardized per 100g dry/edible portion.</p>
       </div>
 
-      <aside class="kpi-panel" aria-label="Aggregated Metrics">
+      <aside class="kpi-panel" data-i18n-aria-label="kpi.aria" aria-label="Aggregated Metrics">
         <div class="kpi-item">
           <span class="kpi-value" id="kpi-total">0</span>
-          <span class="kpi-label">Cultivars Listed</span>
+          <span class="kpi-label" data-i18n="kpi.total">Cultivars Listed</span>
         </div>
         <div class="kpi-item">
           <span class="kpi-value" id="kpi-protein">0g</span>
-          <span class="kpi-label">Peak Protein / 100g</span>
+          <span class="kpi-label" data-i18n="kpi.protein">Peak Protein / 100g</span>
         </div>
         <div class="kpi-item">
           <span class="kpi-value" id="kpi-iron">0mg</span>
-          <span class="kpi-label">Peak Iron / 100g</span>
+          <span class="kpi-label" data-i18n="kpi.iron">Peak Iron / 100g</span>
         </div>
       </aside>
     </div>
   </header>
 
   <main class="main-content" id="main-content">
-    <section class="control-console" aria-label="Search and Filter Controls">
+    <section class="control-console" data-i18n-aria-label="controls.aria" aria-label="Search and Filter Controls">
       <div class="form-field search-field">
-        <label for="search-input">Search Cultivars</label>
+        <label for="search-input" data-i18n="controls.searchLabel">Search Cultivars</label>
         <input 
           type="search" 
           id="search-input" 
+          data-i18n-placeholder="controls.searchPlaceholder"
           placeholder="Filter by common name, taxon, or bioactive compound..." 
           autocomplete="off"
           spellcheck="false"
@@ -47,24 +54,24 @@
       </div>
 
       <div class="form-field">
-        <label for="category-select">Classification</label>
+        <label for="category-select" data-i18n="controls.categoryLabel">Classification</label>
         <select id="category-select">
-          <option value="ALL">All Classifications</option>
-          <option value="Pseudocereal">Pseudocereal</option>
-          <option value="Tuber/Root">Tuber / Root</option>
-          <option value="Legume">Legume</option>
-          <option value="Grain">Grain</option>
+          <option value="ALL" data-i18n="category.ALL">All Classifications</option>
+          <option value="Pseudocereal" data-i18n="category.Pseudocereal">Pseudocereal</option>
+          <option value="Tuber/Root" data-i18n="category.Tuber/Root">Tuber / Root</option>
+          <option value="Legume" data-i18n="category.Legume">Legume</option>
+          <option value="Grain" data-i18n="category.Grain">Grain</option>
         </select>
       </div>
 
       <div class="form-field">
-        <label for="sort-select">Sort By Metric</label>
+        <label for="sort-select" data-i18n="controls.sortLabel">Sort By Metric</label>
         <select id="sort-select">
-          <option value="name-asc">Cultivar Name (A to Z)</option>
-          <option value="protein-desc">Protein (High to Low)</option>
-          <option value="fiber-desc">Dietary Fiber (High to Low)</option>
-          <option value="iron-desc">Iron Content (High to Low)</option>
-          <option value="calories-asc">Caloric Density (Low to High)</option>
+          <option value="name-asc" data-i18n="sort.name-asc">Cultivar Name (A to Z)</option>
+          <option value="protein-desc" data-i18n="sort.protein-desc">Protein (High to Low)</option>
+          <option value="fiber-desc" data-i18n="sort.fiber-desc">Dietary Fiber (High to Low)</option>
+          <option value="iron-desc" data-i18n="sort.iron-desc">Iron Content (High to Low)</option>
+          <option value="calories-asc" data-i18n="sort.calories-asc">Caloric Density (Low to High)</option>
         </select>
       </div>
     </section>
@@ -73,13 +80,13 @@
       <span id="results-count">Displaying records...</span>
     </div>
 
-    <section class="catalog-grid" id="cultivar-grid" aria-label="Cultivar Records">
+    <section class="catalog-grid" id="cultivar-grid" data-i18n-aria-label="grid.aria" aria-label="Cultivar Records">
       <!-- Cards rendered via main.js -->
     </section>
   </main>
 
   <footer class="app-footer">
-    <p>Values standardized per 100g edible portion. Derived from FAO/INFOODS Regional Food Composition Tables for the Andes and agronomical literature.</p>
+    <p data-i18n="footer.note">Values standardized per 100g edible portion. Derived from FAO/INFOODS Regional Food Composition Tables for the Andes and agronomical literature.</p>
   </footer>
 
   <script src="./main.js"></script>

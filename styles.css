@@ -364,3 +364,41 @@ body {
     align-items: flex-start;
   }
 }
+/* Language Switch */
+.header-inner {
+  position: relative;
+}
+
+.lang-switch {
+  position: absolute;
+  top: -1.75rem;
+  right: 0;
+  display: inline-flex;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.lang-btn {
+  font: 600 0.75rem/1 var(--font-sans);
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.7rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  border: 0;
+  cursor: pointer;
+}
+
+.lang-btn + .lang-btn {
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.lang-btn[aria-pressed="true"] {
+  background-color: var(--color-terracotta);
+  color: #FFFFFF;
+}
+
+.lang-btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
