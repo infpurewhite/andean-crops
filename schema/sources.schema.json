@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Andean Crops Sources Registry",
+  "type": "object",
+  "required": ["version", "lastUpdated", "sources"],
+  "properties": {
+    "version": { "type": "string" },
+    "lastUpdated": { "type": "string", "format": "date" },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "shortCitation", "title", "authorsOrOrg", "year", "identifier", "url", "accessedAt"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "type": { "type": "string", "enum": ["food_composition_table", "peer_reviewed"] },
+          "shortCitation": { "type": "string", "minLength": 2 },
+          "title": { "type": "string", "minLength": 5 },
+          "authorsOrOrg": { "type": "string", "minLength": 3 },
+          "year": { "type": "integer", "minimum": 1950, "maximum": 2100 },
+          "identifier": { "type": "string", "minLength": 2 },
+          "url": { "type": "string", "pattern": "^https?://" },
+          "accessedAt": { "type": "string", "format": "date" }
+        }
+      }
+    }
+  }
+}

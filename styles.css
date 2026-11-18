@@ -54,7 +54,7 @@ body {
 }
 
 .header-inner {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -91,7 +91,7 @@ body {
 /* KPI Summary Display */
 .kpi-panel {
   display: flex;
-  gap: 1rem;
+  gap: 0.85rem;
   flex-wrap: wrap;
 }
 
@@ -99,21 +99,21 @@ body {
   background-color: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-md);
-  padding: 0.75rem 1.25rem;
-  min-width: 110px;
+  padding: 0.75rem 1.1rem;
+  min-width: 105px;
 }
 
 .kpi-value {
   display: block;
   font-family: var(--font-mono);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-gold);
   line-height: 1.2;
 }
 
 .kpi-label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #DDE5E1;
@@ -121,7 +121,7 @@ body {
 
 /* Main Content Container */
 .main-content {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: -1.5rem auto 4rem;
   padding: 0 1.5rem;
 }
@@ -133,8 +133,8 @@ body {
   border-radius: var(--radius-lg);
   padding: 1.25rem 1.5rem;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 1.25rem;
+  grid-template-columns: 1.8fr 1fr 1.15fr 1.15fr;
+  gap: 1rem;
   box-shadow: var(--shadow-md);
 }
 
@@ -145,7 +145,7 @@ body {
 }
 
 .form-field label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -155,8 +155,8 @@ body {
 .form-field input,
 .form-field select {
   font-family: inherit;
-  font-size: 0.9rem;
-  padding: 0.65rem 0.85rem;
+  font-size: 0.88rem;
+  padding: 0.62rem 0.8rem;
   border: 1px solid var(--color-border-dark);
   border-radius: var(--radius-sm);
   background-color: var(--color-surface);
@@ -176,12 +176,41 @@ body {
   margin: 1.25rem 0 1rem;
   font-size: 0.85rem;
   color: var(--color-text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.status-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.42rem 0.8rem;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-slate-900);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-alt);
+  border-color: var(--color-slate-900);
 }
 
 /* Catalog Card Grid */
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1.5rem;
 }
 
@@ -189,7 +218,7 @@ body {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
@@ -204,8 +233,17 @@ body {
 
 .card-header {
   border-bottom: 1px solid var(--color-border);
-  padding-bottom: 0.85rem;
-  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.card-badges {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+  flex-wrap: wrap;
 }
 
 .badge-classification {
@@ -216,17 +254,28 @@ body {
   letter-spacing: 0.08em;
   padding: 0.2rem 0.55rem;
   border-radius: var(--radius-sm);
-  margin-bottom: 0.5rem;
 }
 
 .badge-pseudocereal { background-color: #F8EFE3; color: #734F18; }
 .badge-tuberroot    { background-color: #F0EAF5; color: #4B276E; }
 .badge-legume       { background-color: #E2ECE5; color: #1B5834; }
 .badge-grain        { background-color: #F7E6EB; color: #771C35; }
+.badge-fruit        { background-color: #FDF0E6; color: #9A4212; }
+.badge-seedalga     { background-color: #E3F1F4; color: #165163; }
+
+.badge-basis {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface-alt);
+  padding: 0.18rem 0.45rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
 
 .cultivar-name {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.32rem;
   font-weight: 700;
   color: var(--color-slate-900);
   line-height: 1.2;
@@ -240,14 +289,20 @@ body {
   margin-top: 0.15rem;
 }
 
-.cultivar-family {
-  display: inline-block;
+.cultivar-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
   font-size: 0.72rem;
   color: var(--color-slate-800);
+  margin-top: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.cultivar-family {
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 0.25rem;
+  letter-spacing: 0.04em;
 }
 
 /* Nutrient Matrix Grid */
@@ -256,15 +311,15 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
   background-color: var(--color-surface-alt);
-  padding: 0.75rem;
+  padding: 0.7rem;
   border-radius: var(--radius-sm);
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
   text-align: center;
 }
 
 .macro-cell-label {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.64rem;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--color-text-muted);
@@ -272,7 +327,7 @@ body {
 
 .macro-cell-value {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   font-weight: 700;
   color: var(--color-slate-900);
 }
@@ -280,16 +335,16 @@ body {
 /* Secondary Nutrient Roster */
 .nutrient-roster {
   list-style: none;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   border-bottom: 1px dashed var(--color-border);
-  padding-bottom: 0.85rem;
-  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
 .nutrient-roster li {
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem 0;
+  padding: 0.16rem 0;
 }
 
 .nutrient-roster span {
@@ -301,25 +356,73 @@ body {
   color: var(--color-text-main);
 }
 
-/* Bioactive Phytochemical Detail */
+/* Bioactive & Processing Detail */
 .bioactive-section {
-  margin-top: auto;
+  margin-bottom: 0.85rem;
 }
 
 .bioactive-title {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-terracotta);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.processing-title {
+  color: var(--color-forest-green);
 }
 
 .bioactive-desc {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--color-slate-800);
-  line-height: 1.45;
+  line-height: 1.42;
+}
+
+/* Card Provenance / Source Chips */
+.card-sources {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.source-chip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.source-group-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  min-width: 78px;
+}
+
+.source-chip {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-forest-green);
+  background-color: #EDF3EF;
+  border: 1px solid #C8DDD0;
+  border-radius: var(--radius-sm);
+  padding: 0.14rem 0.45rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.source-chip:hover {
+  background-color: #DCE9E0;
+  border-color: var(--color-forest-green);
 }
 
 /* Empty State Feedback */
@@ -344,6 +447,115 @@ body {
   color: var(--color-text-muted);
 }
 
+/* Citation Modal */
+.source-modal {
+  margin: auto;
+  max-width: 680px;
+  width: calc(100% - 2rem);
+  max-height: 85vh;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  box-shadow: var(--shadow-lg);
+  padding: 0;
+  overflow: hidden;
+}
+
+.source-modal::backdrop {
+  background-color: rgba(22, 36, 29, 0.62);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--color-slate-900);
+  color: #FFFFFF;
+  border-bottom: 3px solid var(--color-terracotta);
+}
+
+.modal-kicker {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+}
+
+.modal-header h2 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  margin-top: 0.15rem;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.1rem 0.35rem;
+}
+
+.modal-body {
+  padding: 1.25rem 1.5rem;
+  overflow-y: auto;
+  max-height: calc(85vh - 85px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.citation-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  background-color: var(--color-cream);
+}
+
+.citation-type {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-terracotta);
+  margin-bottom: 0.25rem;
+}
+
+.citation-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-slate-900);
+}
+
+.citation-authors {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+.citation-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+}
+
+.citation-meta a {
+  color: var(--color-forest-green);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 /* Footer Section */
 .app-footer {
   text-align: center;
@@ -354,11 +566,17 @@ body {
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 860px) {
+@media (max-width: 960px) {
+  .control-console {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
   .control-console {
     grid-template-columns: 1fr;
   }
-  
+
   .header-inner {
     flex-direction: column;
     align-items: flex-start;
