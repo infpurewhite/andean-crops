@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" data-i18n-content="meta.description" content="Nutritional database and biochemical profiles of Andean agricultural cultivars normalized per 100g edible portion.">
+  <meta name="description" data-i18n-content="meta.description" content="Sourced nutritional database and biochemical profiles of Andean agricultural cultivars with dry-matter normalization and peer-reviewed provenance.">
   <title data-i18n="meta.title">Andean Agricultural &amp; Nutritional Observatory</title>
   <link rel="alternate" hreflang="en" href="./?lang=en">
   <link rel="alternate" hreflang="es" href="./?lang=es">
@@ -17,15 +17,19 @@
         <button type="button" class="lang-btn" data-lang="es" lang="es" aria-pressed="false">ES</button>
       </nav>
       <div class="header-branding">
-        <span class="badge" data-i18n="header.badge">Agrobiological Observatory</span>
+        <span class="classification-badge" data-i18n="header.badge">Agrobiological Observatory</span>
         <h1 data-i18n="header.title">Andean Cultivar Profiles</h1>
-        <p data-i18n="header.subtitle">Nutritional, biochemical, and phytochemical indicators standardized per 100g dry/edible portion.</p>
+        <p data-i18n="header.subtitle">Sourced nutritional, mineral, and phytochemical database with field-group provenance and dry-matter normalization.</p>
       </div>
 
       <aside class="kpi-panel" data-i18n-aria-label="kpi.aria" aria-label="Aggregated Metrics">
         <div class="kpi-item">
           <span class="kpi-value" id="kpi-total">0</span>
           <span class="kpi-label" data-i18n="kpi.total">Cultivars Listed</span>
+        </div>
+        <div class="kpi-item">
+          <span class="kpi-value" id="kpi-sources">0</span>
+          <span class="kpi-label" data-i18n="kpi.sources">Verified Sources</span>
         </div>
         <div class="kpi-item">
           <span class="kpi-value" id="kpi-protein">0g</span>
@@ -40,14 +44,14 @@
   </header>
 
   <main class="main-content" id="main-content">
-    <section class="control-console" data-i18n-aria-label="controls.aria" aria-label="Search and Filter Controls">
+    <section class="control-console" data-i18n-aria-label="controls.aria" aria-label="Search, Filter, and Basis Controls">
       <div class="form-field search-field">
         <label for="search-input" data-i18n="controls.searchLabel">Search Cultivars</label>
-        <input 
-          type="search" 
-          id="search-input" 
+        <input
+          type="search"
+          id="search-input"
           data-i18n-placeholder="controls.searchPlaceholder"
-          placeholder="Filter by common name, taxon, or bioactive compound..." 
+          placeholder="Filter by name, Quechua/local name, taxon, or bioactive..."
           autocomplete="off"
           spellcheck="false"
         >
@@ -61,6 +65,16 @@
           <option value="Tuber/Root" data-i18n="category.Tuber/Root">Tuber / Root</option>
           <option value="Legume" data-i18n="category.Legume">Legume</option>
           <option value="Grain" data-i18n="category.Grain">Grain</option>
+          <option value="Fruit" data-i18n="category.Fruit">Fruit</option>
+          <option value="Seed/Alga" data-i18n="category.Seed/Alga">Seed / Alga</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="basis-select" data-i18n="controls.basisLabel">Measurement Basis</label>
+        <select id="basis-select">
+          <option value="as-reported" data-i18n="basis.as-reported">As-Reported (100g edible)</option>
+          <option value="dry-matter" data-i18n="basis.dry-matter">Dry Weight (100g DM)</option>
         </select>
       </div>
 
@@ -71,13 +85,20 @@
           <option value="protein-desc" data-i18n="sort.protein-desc">Protein (High to Low)</option>
           <option value="fiber-desc" data-i18n="sort.fiber-desc">Dietary Fiber (High to Low)</option>
           <option value="iron-desc" data-i18n="sort.iron-desc">Iron Content (High to Low)</option>
+          <option value="zinc-desc" data-i18n="sort.zinc-desc">Zinc Content (High to Low)</option>
+          <option value="vitc-desc" data-i18n="sort.vitc-desc">Vitamin C (High to Low)</option>
           <option value="calories-asc" data-i18n="sort.calories-asc">Caloric Density (Low to High)</option>
         </select>
       </div>
     </section>
 
     <div class="status-bar" aria-live="polite" aria-atomic="true">
-      <span id="results-count">Displaying records...</span>
+      <span id="results-count" data-i18n="status.loading">Loading Andean cultivar database...</span>
+      <div class="status-actions">
+        <button type="button" class="btn-secondary" id="open-sources-btn" data-i18n="actions.sources">Source Registry</button>
+        <button type="button" class="btn-secondary" id="export-csv-btn" data-i18n="actions.exportCsv">Export CSV</button>
+        <button type="button" class="btn-secondary" id="export-json-btn" data-i18n="actions.exportJson">Export JSON</button>
+      </div>
     </div>
 
     <section class="catalog-grid" id="cultivar-grid" data-i18n-aria-label="grid.aria" aria-label="Cultivar Records">
@@ -86,8 +107,20 @@
   </main>
 
   <footer class="app-footer">
-    <p data-i18n="footer.note">Values standardized per 100g edible portion. Derived from FAO/INFOODS Regional Food Composition Tables for the Andes and agronomical literature.</p>
+    <p data-i18n="footer.note">Proximate &amp; mineral data sourced from CENAN/INS Peru (2017), USDA FoodData Central, and FAO/INFOODS. Bioactive &amp; processing profiles backed by peer-reviewed DOIs.</p>
   </footer>
+
+  <!-- Citation & Source Registry Modal -->
+  <dialog class="source-modal" id="source-modal" aria-labelledby="modal-title">
+    <div class="modal-header">
+      <div>
+        <span class="modal-kicker" id="modal-kicker">Provenance &amp; Citations</span>
+        <h2 id="modal-title">Source Registry</h2>
+      </div>
+      <button type="button" class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </dialog>
 
   <script src="./main.js"></script>
 </body>

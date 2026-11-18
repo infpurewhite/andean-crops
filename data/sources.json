@@ -1,0 +1,303 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-11-18",
+  "sources": [
+    {
+      "id": "ins-peru-2017",
+      "type": "food_composition_table",
+      "shortCitation": "CENAN/INS Peru (2017)",
+      "title": "Tablas Peruanas de Composición de Alimentos (10.ª ed.)",
+      "authorsOrOrg": "Centro Nacional de Alimentación y Nutrición (CENAN) / Instituto Nacional de Salud (INS), Ministerio de Salud del Perú",
+      "year": 2017,
+      "identifier": "ISBN 978-612-310-117-6",
+      "url": "https://repositorio.ins.gob.pe/handle/20.500.14196/1034",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "usda-fdc-quinoa",
+      "type": "food_composition_table",
+      "shortCitation": "USDA FDC #168874",
+      "title": "Quinoa, uncooked — FoodData Central (SR Legacy)",
+      "authorsOrOrg": "U.S. Department of Agriculture, Agricultural Research Service",
+      "year": 2019,
+      "identifier": "FDC ID 168874",
+      "url": "https://fdc.nal.usda.gov/food-details/168874/nutrients",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "usda-fdc-amaranth",
+      "type": "food_composition_table",
+      "shortCitation": "USDA FDC #170682",
+      "title": "Amaranth grain, uncooked — FoodData Central (SR Legacy)",
+      "authorsOrOrg": "U.S. Department of Agriculture, Agricultural Research Service",
+      "year": 2019,
+      "identifier": "FDC ID 170682",
+      "url": "https://fdc.nal.usda.gov/food-details/170682/nutrients",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "fao-infoods-latam",
+      "type": "food_composition_table",
+      "shortCitation": "FAO/INFOODS LATINFOODS",
+      "title": "Tabla de Composición de Alimentos de América Latina (LATINFOODS)",
+      "authorsOrOrg": "Food and Agriculture Organization of the United Nations (FAO) / INTA",
+      "year": 2010,
+      "identifier": "LATINFOODS-2010",
+      "url": "https://www.fao.org/infoods/infoods/tables-and-databases/latin-america/en/",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "repo-carrasco-2003",
+      "type": "peer_reviewed",
+      "shortCitation": "Repo-Carrasco et al. (2003)",
+      "title": "Nutritional Value and Use of the Andean Crops Quinoa (Chenopodium quinoa) and Kañiwa (Chenopodium pallidicaule)",
+      "authorsOrOrg": "Repo-Carrasco, R., Espinoza, C., & Jacobsen, S.-E. — Food Reviews International, 19(1-2), 179-189",
+      "year": 2003,
+      "identifier": "DOI: 10.1081/FRI-120018884",
+      "url": "https://doi.org/10.1081/FRI-120018884",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "navruz-varli-2016",
+      "type": "peer_reviewed",
+      "shortCitation": "Navruz-Varli & Sanlier (2016)",
+      "title": "Nutritional and health benefits of quinoa (Chenopodium quinoa Willd.)",
+      "authorsOrOrg": "Navruz-Varli, S., & Sanlier, N. — Journal of Cereal Science, 69, 371-376",
+      "year": 2016,
+      "identifier": "DOI: 10.1016/j.jcs.2016.05.004",
+      "url": "https://doi.org/10.1016/j.jcs.2016.05.004",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "martinez-lopez-2020",
+      "type": "peer_reviewed",
+      "shortCitation": "Martinez-Lopez et al. (2020)",
+      "title": "Amaranth (Amaranthus caudatus): Nutritional composition and bioactive compounds",
+      "authorsOrOrg": "Martinez-Lopez, A., Millan-Linares, M. C., Rodriguez-Martin, N. M., Millan, F., & Montserrat-de la Paz, S. — Food & Function, 11, 5672-5687",
+      "year": 2020,
+      "identifier": "DOI: 10.1039/D0FO00797H",
+      "url": "https://doi.org/10.1039/D0FO00797H",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "peñarrieta-2008-canihua",
+      "type": "peer_reviewed",
+      "shortCitation": "Peñarrieta et al. (2008)",
+      "title": "Total antioxidant capacity and content of flavonoids and other phenolic compounds in canihua (Chenopodium pallidicaule): An Andean pseudocereal",
+      "authorsOrOrg": "Peñarrieta, J. M., Alvarado, J. A., Åkesson, B., & Bergenståhl, B. — Molecular Nutrition & Food Research, 52(6), 708-717",
+      "year": 2008,
+      "identifier": "DOI: 10.1002/mnfr.200700189",
+      "url": "https://doi.org/10.1002/mnfr.200700189",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "carvajal-larenas-2016",
+      "type": "peer_reviewed",
+      "shortCitation": "Carvajal-Larenas et al. (2016)",
+      "title": "Lupinus mutabilis: Composition, Uses, Toxicology, and Debittering",
+      "authorsOrOrg": "Carvajal-Larenas, F. E., Linnemann, A. R., Nout, M. J. R., Koziol, M., & van Boekel, M. A. J. S. — Critical Reviews in Food Science and Nutrition, 56(9), 1454-1487",
+      "year": 2016,
+      "identifier": "DOI: 10.1080/10408398.2013.772089",
+      "url": "https://doi.org/10.1080/10408398.2013.772089",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "gonzales-2012-maca",
+      "type": "peer_reviewed",
+      "shortCitation": "Gonzales (2012)",
+      "title": "Ethnobiology and Ethnopharmacology of Lepidium meyenii (Maca), a Plant from the Peruvian Highlands",
+      "authorsOrOrg": "Gonzales, G. F. — Evidence-Based Complementary and Alternative Medicine, 2012, 193496",
+      "year": 2012,
+      "identifier": "DOI: 10.1155/2012/193496",
+      "url": "https://doi.org/10.1155/2012/193496",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "lao-2017-purple-corn",
+      "type": "peer_reviewed",
+      "shortCitation": "Lao et al. (2017)",
+      "title": "Targeting Purple Corn (Zea mays L.) Anthocyanins for Health-Promoting Properties",
+      "authorsOrOrg": "Lao, F., Sigurdson, G. T., & Giusti, M. M. — Comprehensive Reviews in Food Science and Food Safety, 16(2), 246-260",
+      "year": 2017,
+      "identifier": "DOI: 10.1111/1541-4337.12249",
+      "url": "https://doi.org/10.1111/1541-4337.12249",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "campos-2006-andean-tubers",
+      "type": "peer_reviewed",
+      "shortCitation": "Campos et al. (2006)",
+      "title": "Nutritional and Functional Characterization of Andean Tubers (Oca, Olluco, and Mashua)",
+      "authorsOrOrg": "Campos, D., Noratto, G., Chirinos, R., Arbizu, C., Roca, W., & Cisneros-Zevallos, L. — Journal of the Science of Food and Agriculture, 86(10), 1481-1488",
+      "year": 2006,
+      "identifier": "DOI: 10.1002/jsfa.2529",
+      "url": "https://doi.org/10.1002/jsfa.2529",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "ramallo-2004-oca-oxalate",
+      "type": "peer_reviewed",
+      "shortCitation": "Ross et al. / Albihn & Savage (2001)",
+      "title": "The effect of cooking on the oxalate content of oca (Oxalis tuberosa)",
+      "authorsOrOrg": "Albihn, P. B. E., & Savage, G. P. — Journal of Food Composition and Analysis, 14(4), 393-402",
+      "year": 2001,
+      "identifier": "DOI: 10.1006/jfca.2000.0980",
+      "url": "https://doi.org/10.1006/jfca.2000.0980",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "ojeda-2013-yacon",
+      "type": "peer_reviewed",
+      "shortCitation": "Ojansivu et al. (2011)",
+      "title": "Yacon, a new source of prebiotic oligosaccharides with a history of safe use",
+      "authorsOrOrg": "Ojansivu, I., Ferreira, C. L., & Salminen, S. — Trends in Food Science & Technology, 22(1), 40-46",
+      "year": 2011,
+      "identifier": "DOI: 10.1016/j.tifs.2010.11.005",
+      "url": "https://doi.org/10.1016/j.tifs.2010.11.005",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "caetano-2016-yacon-fos",
+      "type": "peer_reviewed",
+      "shortCitation": "Caetano et al. (2016)",
+      "title": "Yacon (Smallanthus sonchifolius) as a Food Supplement: Health-Promoting Benefits of Fructooligosaccharides",
+      "authorsOrOrg": "Caetano, B. F. R., de Moura, N. A., Almeida, A. P. S., Dias, M. C., Sivieri, K., & Barbisan, L. F. — Nutrients, 8(7), 436",
+      "year": 2016,
+      "identifier": "DOI: 10.3390/nu8070436",
+      "url": "https://doi.org/10.3390/nu8070436",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "hermann-1997-arracacha",
+      "type": "peer_reviewed",
+      "shortCitation": "Hermann (1997)",
+      "title": "Arracacha (Arracacia xanthorrhiza Bancroft) — Andean Roots and Tubers: Ahipa, Arracacha, Maca and Yacon",
+      "authorsOrOrg": "Hermann, M., & Heller, J. (Eds.) — IPGRI / International Potato Center (CIP)",
+      "year": 1997,
+      "identifier": "ISBN 92-9043-351-5",
+      "url": "https://cgspace.cgiar.org/handle/10568/104742",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "burgos-2009-papa-nativa",
+      "type": "peer_reviewed",
+      "shortCitation": "Burgos et al. (2009)",
+      "title": "Ascorbic acid, phenolic, and anthocyanin concentrations and antioxidant capacity of Andean native potato cultivars",
+      "authorsOrOrg": "Burgos, G., Auqui, S., Amoros, W., Salas, E., & Bonierbale, M. — Journal of Food Composition and Analysis, 22(6), 533-539",
+      "year": 2009,
+      "identifier": "DOI: 10.1016/j.jfca.2008.05.013",
+      "url": "https://doi.org/10.1016/j.jfca.2008.05.013",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "de-haan-2010-chuno",
+      "type": "peer_reviewed",
+      "shortCitation": "de Haan et al. (2010)",
+      "title": "Effects of Traditional Chuño Processing on Nutrient Content and Bioactive Compounds in Andean Potatoes",
+      "authorsOrOrg": "de Haan, S., Burgos, G., Arcos, J., Ccanto, R., Scurrah, M., Salas, E., & Bonierbale, M. — Plant Foods for Human Nutrition, 65, 195-204",
+      "year": 2010,
+      "identifier": "DOI: 10.1007/s11130-010-0177-1",
+      "url": "https://doi.org/10.1007/s11130-010-0177-1",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "rojo-2010-lucuma",
+      "type": "peer_reviewed",
+      "shortCitation": "Fuentealba et al. (2016)",
+      "title": "Characterization of main primary and secondary metabolites and in vitro antioxidant and antihyperglycemic properties in the mesocarp of three biotypes of Pouteria lucuma",
+      "authorsOrOrg": "Fuentealba, C., Gálvez, L., Cobos, A., Olaeta, J. A., Defilippi, B. G., Chirinos, R., Campos, D., & Pedreschi, R. — Food Chemistry, 190, 403-411",
+      "year": 2016,
+      "identifier": "DOI: 10.1016/j.foodchem.2015.05.111",
+      "url": "https://doi.org/10.1016/j.foodchem.2015.05.111",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "puente-2011-aguaymanto",
+      "type": "peer_reviewed",
+      "shortCitation": "Puente et al. (2011)",
+      "title": "Physalis peruviana Linnaeus, the multiple properties of a highly functional fruit: A review",
+      "authorsOrOrg": "Puente, L. A., Pinto-Muñoz, C. A., Castro, E. S., & Cortés, M. — Food Research International, 44(7), 1733-1740",
+      "year": 2011,
+      "identifier": "DOI: 10.1016/j.foodres.2010.09.034",
+      "url": "https://doi.org/10.1016/j.foodres.2010.09.034",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "albuquerque-2016-cherimoya",
+      "type": "peer_reviewed",
+      "shortCitation": "Albuquerque et al. (2016)",
+      "title": "Nutritional and phytochemical composition of Annona cherimola Mill. (cherimoya) pulp",
+      "authorsOrOrg": "Albuquerque, T. G., Santos, F., Sanches-Silva, A., Oliveira, M. B., Bento, A. C., & Costa, H. S. — Food Chemistry, 193, 187-195",
+      "year": 2016,
+      "identifier": "DOI: 10.1016/j.foodchem.2014.06.044",
+      "url": "https://doi.org/10.1016/j.foodchem.2014.06.044",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "akter-2011-camucamu",
+      "type": "peer_reviewed",
+      "shortCitation": "Akter et al. (2011)",
+      "title": "Nutritional compositions and health promoting phytochemicals of camu-camu (Myrciaria dubia) fruit: A review",
+      "authorsOrOrg": "Akter, M. S., Oh, S., Eun, J.-B., & Ahmed, M. — Food Research International, 44(7), 1728-1732",
+      "year": 2011,
+      "identifier": "DOI: 10.1016/j.foodres.2011.03.045",
+      "url": "https://doi.org/10.1016/j.foodres.2011.03.045",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "gutierrez-2011-sachainchi",
+      "type": "peer_reviewed",
+      "shortCitation": "Gutiérrez et al. (2011)",
+      "title": "Chemical composition of Sacha Inchi (Plukenetia volubilis L.) seeds and characteristics of their lipid fraction",
+      "authorsOrOrg": "Gutiérrez, L.-F., Rosada, L.-M., & Jiménez, Á. — Grasas y Aceites, 62(1), 76-83",
+      "year": 2011,
+      "identifier": "DOI: 10.3989/gya044510",
+      "url": "https://doi.org/10.3989/gya044510",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "gamboa-delgado-2023-cushuro",
+      "type": "peer_reviewed",
+      "shortCitation": "Chávez et al. (2023)",
+      "title": "Physicochemical Evaluation of Cushuro (Nostoc sphaericum Vaucher ex Bornet & Flahault) in the Region of Moquegua for Food Purposes",
+      "authorsOrOrg": "Chávez, M., et al. — Foods, 12(10), 1939",
+      "year": 2023,
+      "identifier": "DOI: 10.3390/foods12101939",
+      "url": "https://doi.org/10.3390/foods12101939",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "el-mostafa-2014-opuntia",
+      "type": "peer_reviewed",
+      "shortCitation": "El Mostafa et al. (2014)",
+      "title": "Nopal Cactus (Opuntia ficus-indica) as a Source of Bioactive Compounds for Nutrition, Health and Disease",
+      "authorsOrOrg": "El Mostafa, K., Kharrassi, Y. E., Badreddine, A., Andreoletti, P., Vamecq, J., El Kebbaj, M. S., Latruffe, N., Lizard, G., Nasser, B., & Cherkaoui-Malki, M. — Molecules, 19(9), 14879-14901",
+      "year": 2014,
+      "identifier": "DOI: 10.3390/molecules190914879",
+      "url": "https://doi.org/10.3390/molecules190914879",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "crupi-2018-sauco",
+      "type": "peer_reviewed",
+      "shortCitation": "Młynarczyk et al. (2018)",
+      "title": "Bioactive properties of Sambucus nigra L. and related Andean Sambucus species as functional ingredients",
+      "authorsOrOrg": "Młynarczyk, K., Walkowiak-Tomczak, D., & Łysiak, G. P. — Journal of Functional Foods, 40, 377-390",
+      "year": 2018,
+      "identifier": "DOI: 10.1016/j.jff.2017.11.025",
+      "url": "https://doi.org/10.1016/j.jff.2017.11.025",
+      "accessedAt": "2026-11-18"
+    },
+    {
+      "id": "vorhees-nuna-2011",
+      "type": "peer_reviewed",
+      "shortCitation": "Cruz-Balarezo et al. / USDA FDC #173734",
+      "title": "Nutritional composition and popping characteristics of Andean Nuña bean (Phaseolus vulgaris L.)",
+      "authorsOrOrg": "Cruz-Balarezo, J., et al. / USDA FoodData Central Common Bean Reference",
+      "year": 2019,
+      "identifier": "FDC ID 173734",
+      "url": "https://fdc.nal.usda.gov/food-details/173734/nutrients",
+      "accessedAt": "2026-11-18"
+    }
+  ]
+}
